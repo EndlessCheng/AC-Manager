@@ -1,0 +1,3632 @@
+  1  fix windows packaging
+  2  fix package names
+  3  fix OSX packaging
+  4  fix previous commit
+  5  unify filenames in package
+  6  dlpath argument for aws_uploader
+  7  fix opening external protocol
+  8  bump version to 0.10.6-pre
+  9  adding AUTHORS for #2006
+ 10  Handle system application termination attempts
+
+Implements `applicationShouldTerminate` method inside the `AppController`
+(`NSApplicationDelegate`) to (catch and) handle all application termination
+requests (e.g `Quit` in OS X Dock). Application termination is delegated to per
+window `close`/`quit` event handlers (or default window behaviour) via
+`App::CloseAllWindows` (called with the `quit` flag set): application terminates
+when/if all window close.
+
+Without an `applicationShouldTerminate` implementation the application
+terminates immediately (e.g. with `Quit` in OS X Dock) without permitting an
+orderly shutdown and emitting any `close`/`quit` events.
+
+Fixes rogerwang/node-webkit#430 and also resolves rogerwang/node-webkit#924
+ 11  [README] update for 0.10.5
+ 12  [CHANGELOG] update for 0.10.5
+ 13  bump version to 0.10.5
+ 14  Fix 6bd5911: allow io while doing Init
+ 15  Fix 6bd5911: allow io while doing Init
+ 16  Merge pull request #2330 from livedo/master
+
+Windows: Don't crash on invalid parameter error.
+ 17  Merge pull request #2330 from livedo/master
+
+Windows: Don't crash on invalid parameter error.
+ 18  Merge pull request #2311 from fancycode/initialize_package_earlier
+
+Initialize Package earlier to evaluate commandline args earlier (fixes #1743)
+ 19  Merge pull request #2311 from fancycode/initialize_package_earlier
+
+Initialize Package earlier to evaluate commandline args earlier (fixes #1743)
+ 20  win: Don't crash on invalid parameter error.
+
+libuv relies on suppressing the invalid parameter error in
+uv__get_osfhandle, and it could happen frequently.
+ 21  Fix #2326: Workaround before update to VS2013 update 2
+
+This is upstream issue #348525 and #330658
+ 22  Fix #2326: Workaround before update to VS2013 update 2
+
+This is upstream issue #348525 and #330658
+ 23  Fix #2171: crash when opening window
+ 24  Fix #2171: crash when opening window
+ 25  Initialize Package earlier to evaluate commandline args earlier (fixes #1743).
+On package initialization, flags from "chromium-args" are added to the Chromium commandline.
+Previously, the Package object was initialized in the "PreMainMessageLoopRun" step.
+As the GPU flags are already evaluated in the "BrowserThreadsStarted" step (which is before that), this was too late for flags like "--ignore-gpu-blacklist".
+ 26  fix CHANGELOG
+ 27  bump version to v0.10.5-pre
+ 28  [README] update for 0.10.4
+ 29  bump version to 0.10.4
+ 30  [OSX] Fix #2294: disable File Quarantine
+ 31  [OSX] Fix #2294: disable File Quarantine
+ 32  Merge pull request #2289 from jtg-gg/notification-disable-sound
+
+[Notification] OSX, disable the default sound
+ 33  Merge pull request #2289 from jtg-gg/notification-disable-sound
+
+[Notification] OSX, disable the default sound
+ 34  [Notification] OSX, disable the default sound
+ 35  fix chrome://gpu
+ 36  remove unused files
+ 37  Merge pull request #2274 from kethinov/updating-AUTHORS
+
+Updating AUTHORS
+ 38  Merge pull request #2274 from kethinov/updating-AUTHORS
+
+Updating AUTHORS
+ 39  Updating AUTHORS
+
+This is by @rogerwang's request:
+https://github.com/rogerwang/node-webkit/pull/2102#issuecomment-50300037
+ 40  Merge pull request #2268 from ghostoy/master
+
+Updated AUTHORS
+ 41  Merge pull request #2268 from ghostoy/master
+
+Updated AUTHORS
+ 42  remove unused BRANDING file
+ 43  [WIN] fix build error
+ 44  [README] update for 0.10.3
+ 45  [CHANGELOG] update for 0.10.3 and 0.10.2
+ 46  fix build warnings in clang
+ 47  Updated AUTHORS
+ 48  Merge pull request #2267 from ghostoy/master
+
+Fix #2167 on Windows
+ 49  Merge pull request #2267 from ghostoy/master
+
+Fix #2167 on Windows
+ 50  Fix #2167 on Windows
+ 51  Fix #2167 on Windows
+ 52  bump version to 0.10.3
+ 53  make nw run as node
+
+Fix #213
+ 54  [README] update for v0.10.2
+ 55  ship the locales folder to fix l10n
+
+Fix #2031
+ 56  bump version to 0.10.2
+ 57  Merge pull request #2192 from gitchs/linux_menu_shortcut_shift
+
+Fix shift modifier not working for window menu on Linux
+ 58  Merge pull request #2192 from gitchs/linux_menu_shortcut_shift
+
+Fix shift modifier not working for window menu on Linux
+ 59  Fix shift modifier not working for window menu
+ 60  update Chromium to 35.0.1916.157
+ 61  Merge pull request #2178 from jtg-gg/screen
+
+[Screen Geometry] API for listening to Screen Bound, Display add, Display remove events
+ 62  Merge pull request #2178 from jtg-gg/screen
+
+[Screen Geometry] API for listening to Screen Bound, Display add, Display remove events
+ 63  Merge pull request #2177 from jtg-gg/notification-improvement
+
+[Notification] Improvement for Windows and Linux platform
+ 64  Merge pull request #2177 from jtg-gg/notification-improvement
+
+[Notification] Improvement for Windows and Linux platform
+ 65  [Screen Geometry] fix run time error (+1 squashed commit)
+Squashed commits:
+[29ac0fd] fix wrong merging (+1 squashed commit)
+Squashed commits:
+[0a0d093] properly call Add/Remove ScreenChangeCallback native function, by counting the javascript listener number (+2 squashed commits)
+Squashed commits:
+[6e1c7c5] Change the screen geometry event handler to use node.js EventEmitter
+move Screen functions from App to seperate Screen class
+[23332bf] Implement "Generic" Event listener, with application on Screen Geometry events listener (+1 squashed commit)
+Squashed commits:
+[372c9bd] add App API to get screen(s) information
+ 66  [Notification] linux improvement, sent on close event (+1 squashed commit)
+Squashed commits:
+[50defb9] [Notification] windows improvement, now will display notification even the icon size < 32x32 (+1 squashed commits)
+
+Squashed commits:
+
+[b7d99ce] [Notification] improve linux notification for different notification server
+ 67  Merge pull request #2175 from jtg-gg/ProgressBar
+
+[ProgressBar] OSX, Win, Ubuntu implementation
+ 68  Merge pull request #2175 from jtg-gg/ProgressBar
+
+[ProgressBar] OSX, Win, Ubuntu implementation
+ 69  Fix #2167: require works in wrong path in new-instance window
+
+the url we get from DOM is 'about:blank' in DidCreateScriptContext.
+check this later in willSetSecurityToken again and set it
+ 70  Fix #2167: require works in wrong path in new-instance window
+
+the url we get from DOM is 'about:blank' in DidCreateScriptContext.
+check this later in willSetSecurityToken again and set it
+ 71  [ProgressBar] Linux implementation, currently only for Ubuntu using Unity api (+1 squashed commit)
+Squashed commits:
+[4d33a69] [ProgressBar] fix window compile error (+1 squashed commits)
+
+Squashed commits:
+
+[1738c18] [linux] placeholder for SetProgressBar (+1 squashed commit)
+Squashed commits:
+[8dd41ec] [WIN] implement SetProgressBar for windows platform (+1 squashed commit)
+Squashed commits:
+[79dca6e] [WIN] implement SetProgressBar for windows platform (+1 squashed commit)
+Squashed commits:
+[1be7893] [MAC] implements SetProgressBar with value 0 - 1,  value > 1 means Indeterminate , value < 0 will turns of the progress bar. Currently still have problem with animating the Indeterminate state, and the progress bar color is fixed to blue
+ 72  [WIN] Fix build error
+ 73  Merge pull request #2158 from jtg-gg/flashframe
+
+[FlashFrame] change NativeWindow::FlashFrame input parameter to int, the javascript boolean parameter true redirected as -1, false as 0
+ 74  Merge pull request #2158 from jtg-gg/flashframe
+
+[FlashFrame] change NativeWindow::FlashFrame input parameter to int, the javascript boolean parameter true redirected as -1, false as 0
+ 75  Merge pull request #2164 from fancycode/screencapture_support
+
+Fixed support for screencapture media requests.
+ 76  Merge pull request #2164 from fancycode/screencapture_support
+
+Fixed support for screencapture media requests.
+ 77  Added myself to contributors.
+ 78  Fixed support for screencapture media requests.
+This fixes issue #1994.
+ 79  support asan build
+ 80  [FlashFrame] change NativeWindow::FlashFrame input parameter to int, the javascript boolean parameter true redirected as -1, false as 0
+ 81  [README] adding line break
+ 82  [README] link to essay; shorter quick start
+ 83  [README] add 64bit OSX link
+ 84  [README] update for 0.10.1
+ 85  [CHANGELOG] update for 0.10.1
+ 86  bump version to v0.10.1
+ 87  Fix #2072: [WIN] context menu popup in wrong (screen) position
+ 88  Fix #2072: [WIN] context menu popup in wrong (screen) position
+ 89  check window script context in will handle navigation callback
+ 90  Merge pull request #1951 from jtg-gg/notification
+
+webkit desktop notification
+ 91  Merge pull request #1951 from jtg-gg/notification
+
+webkit desktop notification
+ 92  Merge pull request #2128 from bwegh/master
+
+Add F-Keys to global shortcuts
+ 93  Merge pull request #2128 from bwegh/master
+
+Add F-Keys to global shortcuts
+ 94  Added myself to contributers
+ 95  Merge pull request #2137 from libm/master
+
+new x64 support for mac build
+ 96  Merge pull request #2137 from libm/master
+
+new x64 support for mac build
+ 97  new x64 support for mac build
+ 98  [Notification] update copyright notice (+1 squashed commit)
+Squashed commits:
+[b3c450f] [Notification] handle empty body on windows (+1 squashed commits)
+
+Squashed commits:
+
+[ca3f634] [Notification] fix compiler error. missing base:: (+1 squashed commits)
+
+Squashed commits:
+
+[af8b22b] [Notification]fix compile error on linux (+1 squashed commit)
+Squashed commits:
+[32bc400] compile error fix (+1 squashed commit)
+Squashed commits:
+[2955c46] [linux] notification implementation (+1 squashed commit)
+Squashed commits:
+[edb7e83] [WIN] make the StatusTray a singleton, check for the StatusIcon if it has been created before, handle the destruction of StatusIcon and StatusObserver properly (+1 squashed commit)
+Squashed commits:
+[3a1f53b] [Linux] add placeholder for the desktop notification (+7 squashed commits)
+Squashed commits:
+[f784e4a] indentation and formatting fix
+[c5ef03d] fix the indentation
+[d1662e7] [MAC] add version check for the notification image, since it only supported by Mavericks
+[18b2d38] [WIN] fix notification manager compile warnings (missing OVERRIDE)
+[00177bb] [MAC] implement loading / showing image from url for desktop notification
+[e8b8cce] fix compile warning for undefined constructor
+[a3d73b2] Move notification image download callback to the parent class, preparation for MAC notification custom icon implementation (+1 squashed commit)
+Squashed commits:
+[ee010e2] [WIN] implement the icon image display from URL (+8 squashed commits)
+Squashed commits:
+[4844475] [MAC] implement desktop notification, display event dispatcher
+[4c5f445] Remove unnecessary comments
+[af4bd7e] Implement notification events dispatcher (close, display, error)
+[d6662bc] [WIN] implement windows balloon tray notification, with application icon as the tray icon
+[19c8965] [WIN]
+AddDesktopNotification, CancelDesktopNotification function prototype adjustment with NotificationManager
+[29816f5] [WIN]
+implement windows notification
+[7191831] [MACOSX]
+implement desktop notification event handler (send the click back to java script)
+implement "CancelDesktopNotification"
+[c5b359d] add notification manager (nw_notification_manager) for desktop notification
+implement MacOS notification manager
+ 99  Merge pull request #2102 from kethinov/hide-certain-standard-mac-menus
+
+Option to hide "Edit" and "Window" OS X menus
+100  Merge pull request #2102 from kethinov/hide-certain-standard-mac-menus
+
+Option to hide "Edit" and "Window" OS X menus
+101  Merge pull request #2114 from Mithgol/patch-1
+
+fix the hyperlink to eFounders in the “Sponsors” section of README.md
+102  Merge pull request #2114 from Mithgol/patch-1
+
+fix the hyperlink to eFounders in the “Sponsors” section of README.md
+103  Fix #55: Support (video) element fullscreen
+104  Fix #55: Support (video) element fullscreen
+105  bump version to v0.10.1-pre
+106  Support fullscreen API
+
+Fix part of #55
+107  fix the hyperlink to eFounders in the “Sponsors” section of README.md
+108  Add support for F-Keys
+109  Add support for F-keys
+110  Update shortcut.cc
+111  Option to hide "Edit" and "Window" OS X menus
+
+This commit adds the option to hide the “Edit” and “Window” menus when
+invoking `createMacBuiltin` like so:
+
+```js
+nativeMenuBar.createMacBuiltin('My App', {
+  hideEdit: true,
+  hideWindow: true
+});
+```
+112  Merge pull request #2086 from gitchs/fix-copy-hardcode
+
+Fix copy hardcode
+113  Merge pull request #2086 from gitchs/fix-copy-hardcode
+
+Fix copy hardcode
+114  Merge pull request #2073 from gitchs/fix_global_shortcut_auto
+
+Fix should.js usage error
+115  Merge pull request #2073 from gitchs/fix_global_shortcut_auto
+
+Fix should.js usage error
+116  [README] update for v0.10.0
+117  [CHANGELOG] update for v0.10.0
+118  [WIN] fix download dialog
+119  bump version to v0.10.0
+120  [WIN] update menuitems properties with UpdateStates of top menu
+
+Fix #1132
+121  [README] update for v0.10.0-rc2
+122  [CHANGELOG] update for v0.10.0-rc2
+123  Fix copy hardcode file name
+124  bump version to 0.10.0-rc2
+125  Revert "[nw10] disable nwsnapshot for now"
+
+This reverts commit eff1e977c46a77aecb7b789519ba448b3b5ea583.
+
+Conflicts:
+	tools/package_binaries.py
+126  [README] better downloads list
+127  implement auth dialog with views framework; dialog ref counting
+128  Fix auth dialog for 0.10
+129  Fix should.js usage error
+130  Merge pull request #2044 from libm/master
+
+Check URL before navigation
+131  Merge pull request #2044 from libm/master
+
+Check URL before navigation
+132  [OSX] Fix #1996: resize with flash on 10.9
+
+This is upstream bug #385120
+133  [OSX] Fix #1996: resize with flash on 10.9
+
+This is upstream bug #385120
+134  Update CHANGELOG.md
+
+Fix #1984
+135  Merge pull request #1735 from zhchbin/hotkey
+
+[API] Implement register/unregister global desktop keyboard shortcut.
+136  Merge pull request #1735 from zhchbin/hotkey
+
+[API] Implement register/unregister global desktop keyboard shortcut.
+137  Merge pull request #2054 from gitchs/http-proxy-auth
+
+Append http proxy auth dialog test case
+138  Merge pull request #2054 from gitchs/http-proxy-auth
+
+Append http proxy auth dialog test case
+139  Merge pull request #2047 from davidgomes/patch-1
+
+Fixes typo.
+140  Merge pull request #2047 from davidgomes/patch-1
+
+Fixes typo.
+141  Append http proxy auth test case.
+142  Check URL before navigation
+
+Fixed an error when an invalid url is given in the address bar.
+143  Fixes typo.
+144  Merge pull request #2045 from gitchs/update-win-menu-shortcut-case
+
+Update window menu shortcut test case.
+145  Merge pull request #2045 from gitchs/update-win-menu-shortcut-case
+
+Update window menu shortcut test case.
+146  Merge pull request #2037 from gitchs/reference_xhr_in_node_context
+
+Append reference xhr in node context test case
+147  Merge pull request #2037 from gitchs/reference_xhr_in_node_context
+
+Append reference xhr in node context test case
+148  Fix menu_shortcut test case on Windows
+149  Append reference xhr in node context test case
+150  X11ErrorTracker has been moved "ui/gfx/x/".
+151  Merge pull request #2002 from gitchs/test-case-append-n-update
+
+Append some test case and update node-main case
+152  Merge pull request #2002 from gitchs/test-case-append-n-update
+
+Append some test case and update node-main case
+153  Fix build error of missing parameter: isolate.
+154  Merge pull request #2018 from gitchs/nwfaketop
+
+nwfaketop
+155  Merge pull request #2018 from gitchs/nwfaketop
+
+nwfaketop
+156  Add nwfaketop test case
+157  Address comment: change {un}registerGlobalHotKey to sync method.
+158  Improvement: |key| of |Shortcut| should be case-insensitive.
+159  [API] Finish register global desktop keyboard shortcut on OSX.
+160  Remove DCHECK limitation of GlobalShortcutListener.
+161  [Test] Automatic test case for keyboard shortcut.
+162  [API] Finish register global desktop keyboard shortcut on linux.
+163  [Test] Manual test case for global keyboard shortcut.
+164  [API] Implement register/unregister global desktop keyboard shortcut on Winodws.
+
+- Introduce GlobalShortcutListener;
+- New api object: Shortcut({'key': '...', 'active': ..., 'failed': ...});
+- New api: App.registerGlobalHotkey, App.unregisterGlobalHotkey.
+165  Update node-main test case
+166  Append test cases
+167  Merge pull request #1825 from gitchs/case-improve
+
+Improve tests directory
+168  Merge pull request #1825 from gitchs/case-improve
+
+Improve tests directory
+169  [README] Add sponsors
+170  [WIN] resize and drag frameless window
+171  [README] add 0.9.2 download link
+
+Fix #1986
+172  [README] update for 0.10.0-rc1
+173  Merge pull request #1981 from libm/master
+
+Include breakpad symbols in dist package on Win and Mac
+174  Merge pull request #1981 from libm/master
+
+Include breakpad symbols in dist package on Win and Mac
+175  Update CHANGELOG.md
+176  Include breakpad symbols in dist package on Win and Mac
+177  [OSX] dump symbols
+178  [WIN] dump symbols
+179  [CHANGELOG] update for 0.10.0-rc1
+180  Make Window event listeners in iframe work
+181  Merge pull request #1976 from libm/nw10
+
+[Win] Move nw.exp nw.lib out of the package
+182  Merge pull request #1976 from libm/nw10
+
+[Win] Move nw.exp nw.lib out of the package
+183  [Win] Move nw.exp nw.lib out of the package
+184  Fix 078ddf70 build error
+185  Fix 078ddf70 build error
+186  bump version to 0.10.0-rc1
+187  handle empty id value in dispatcher callbacks
+188  [OSX] enable mac_strip_release to get dSYMs
+189  Fix OSX build error
+190  accessing JS objects from DOM under multiple contexts
+191  Fix menu testcase
+192  Fix menu & shortcut support
+193  access built-in menus
+
+Conflicts:
+	src/api/dispatcher_bindings.cc
+194  [OSX] menu proposal from Chris
+
+make ClearMenu non-pure virtual as well
+195  turn on manifest for tooltip
+196  Revert "Ship locales dir in linux & win"
+
+This reverts commit b54c2e79065f0ba45ecf836794ec3b7f6db01f95.
+
+locales dir is only needed in debug build
+197  Fix getting new windows
+198  Ship locales dir in linux & win
+199  [WIN] ship icudtl.dat instead of icudt.dll
+200  rename dir 'locale' to 'locales'
+201  use autofill_popup_view_views only on windows
+202  fix build on linux
+203  trying to fix start err
+204  rebase fix for windows; build ok
+205  update upstream version to 35
+206  Merge pull request #1963 from libm/nw10
+
+Added a switch to skip one specified step
+207  Merge pull request #1963 from libm/nw10
+
+Added a switch to skip one specified step
+208  Added a switch to skip one specified step
+209  Merge remote-tracking branch 'origin/master' into nw10
+210  Merge pull request #1957 from jtg-gg/badge
+
+SetBadgeLabel Windows Implementation
+211  Merge pull request #1957 from jtg-gg/badge
+
+SetBadgeLabel Windows Implementation
+212  [WIN] badge feature, fix the indentation, add my name to Authors
+213  [WIN] implement the SetBadgeLabel for windows
+214  passing window object to API JS
+
+API JS is now executing from Node context so window ref is needed
+215  use correct dispatcher host to receive and send messages
+216  fix release build
+217  Enter Node context in RequireNwGui
+218  debugging friendly embedded scripts
+219  Merge pull request #1948 from gitchs/single-instance-test-case
+
+APP single instance test case PR for v0.9
+220  Merge pull request #1948 from gitchs/single-instance-test-case
+
+APP single instance test case PR for v0.9
+221  [nw10] fix crash: return object_registry correctly without scope
+222  [nw10] rebase fix: icudct.dat and force linking all objs in node
+223  Add app single instance test case
+224  bump version to 0.10.0-pre
+225  [nw10] add icudtl; disable osx dsym dist for now
+226  [nw10] disable nwsnapshot for now
+227  [nw10] fix merge
+228  Merge remote-tracking branch 'origin/master' into nw10
+229  [nw10] rebase fix on mac
+230  fix for mac
+231  fix autofill agent
+232  Merge pull request #1944 from libm/master
+
+Flush stdout to inform buildbot that it is not hang.
+233  Merge pull request #1944 from libm/master
+
+Flush stdout to inform buildbot that it is not hang.
+234  Flush stdout to inform buildbot that it is not hang.
+
+Added retry and let 'node-webkit-' bundle to be uploaded first.
+235  Fix navigation from urlbar
+236  Support for 'single-instance' when app is started in folder
+
+Fix #515
+237  update with Chromium 35
+238  Merge pull request #1918 from libm/master
+
+Move aws key id settings into boto config file.
+239  Merge pull request #1918 from libm/master
+
+Move aws key id settings into boto config file.
+240  Move aws key id settings into boto config file.
+
+Goto code.google.com/p/boto/wiki/BotoConfig for more information
+241  Merge pull request #1910 from gitchs/windows_menu_shortcut
+
+Windows Menu Shortcut
+242  Merge pull request #1910 from gitchs/windows_menu_shortcut
+
+Windows Menu Shortcut
+243  Append super and meta modifiers support
+244  Port menu shortcut. But super and meta modifier does not work yet.
+245  Merge pull request #1898 from libm/master
+
+make dump_app_syms executable
+246  Merge pull request #1898 from libm/master
+
+make dump_app_syms executable
+247  make dump_app_syms executable
+248  Merge pull request #1897 from libm/master
+
+Updated symbol generation and strip process.
+249  Merge pull request #1897 from libm/master
+
+Updated symbol generation and strip process.
+250  Updated symbol generation and strip process.
+
+Use the upstream's script (with a minor fix) to generate symbol and
+strip nw binary in the mean time.
+Since everything is built under '-g' (common.gyp:linux_dump_symbols=1),
+the chromedriver and nwsnapshot should also be stripped.
+251  Merge pull request #1893 from libm/master
+
+Strip and keep the timestamp.
+252  Merge pull request #1893 from libm/master
+
+Strip and keep the timestamp.
+253  Strip and keep the timestamp.
+254  Merge pull request #1892 from libm/master
+
+Always use slash for s3 path
+255  Merge pull request #1892 from libm/master
+
+Always use slash for s3 path
+256  Always use slash for s3 path
+257  Merge pull request #1891 from libm/master
+
+Add myself into AUTHORS
+258  Merge pull request #1891 from libm/master
+
+Add myself into AUTHORS
+259  Add myself into AUTHORS
+260  Merge pull request #1890 from libm/master
+
+Fix: cannot get HOME env in windows.
+261  Merge pull request #1890 from libm/master
+
+Fix: cannot get HOME env in windows.
+262  Fix: cannot get HOME env in windows.
+263  Merge pull request #1889 from libm/aws_uploader
+
+Split out aws uploader.
+264  Merge pull request #1889 from libm/aws_uploader
+
+Split out aws uploader.
+265  Split out aws uploader.
+
+Since the uploader is growing big and not very much related to what the
+package_binaries.py is doing, let's split it out.
+266  Merge pull request #1888 from libm/fix_gyp
+
+dump symbols before stripping the nw binary
+267  Merge pull request #1888 from libm/fix_gyp
+
+dump symbols before stripping the nw binary
+268  dump symbols before stripping the nw binary
+269  Merge pull request #1887 from libm/master
+
+Better to store aws key in a separate config file.
+270  Merge pull request #1887 from libm/master
+
+Better to store aws key in a separate config file.
+271  Better to store aws key in a separate config file.
+272  Merge pull request #1886 from libm/master
+
+Added progress indicator for aws uploading
+273  Merge pull request #1886 from libm/master
+
+Added progress indicator for aws uploading
+274  Added progress indicator for aws uploading
+275  Merge pull request #1882 from libm/master
+
+Added aws upload support
+276  Merge pull request #1882 from libm/master
+
+Added aws upload support
+277  Added aws upload support
+278  Merge pull request #1868 from gitchs/linux_menu_key_map
+
+Append menu shortcut test case
+279  Merge pull request #1868 from gitchs/linux_menu_key_map
+
+Append menu shortcut test case
+280  Merge pull request #1859 from keithamus/patch-1
+
+[Readme] Include Node/Chrome versions in releases
+281  Merge pull request #1859 from keithamus/patch-1
+
+[Readme] Include Node/Chrome versions in releases
+282  add App.addOriginAccessWhitelistEntry & App.removeOriginAccessWhitelistEntry
+
+Fix #1016; Fix #1514
+283  Merge pull request #1881 from libm/master
+
+Updated symbol generation process.
+284  Merge pull request #1881 from libm/master
+
+Updated symbol generation process.
+285  Updated symbol generation process.
+
+Now the 'dist' target will depend on nw, chromedriver and symbols. All
+these binaries will be packed into 'dist' folder under out/Release
+286  Merge pull request #1824 from libm/master
+
+Rename chromedriver2_server to chromedriver following upstream's change.
+287  Merge pull request #1824 from libm/master
+
+Rename chromedriver2_server to chromedriver following upstream's change.
+288  Rename chromedriver2_server to chromedriver following upstream's change.
+
+https://src.chromium.org/viewvc/chrome?revision=225192&view=revision
+289  Fix previous commit
+290  Append menu shortcut test case
+291  Port menu shortcut.
+292  Fix: set force close only when dealing with top frames
+
+Fix the previous commit in a better way to simulate the previous
+solution (but do it from renderer): only try to set the flag on
+the first time.
+
+Conflicts:
+	src/renderer/shell_content_renderer_client.cc
+293  Include Node/Chrome versions in releases
+294  Fix: frameless window not draggable after resizing
+
+cherry-pick https://chromiumcodereview.appspot.com/12314115/
+295  Merge pull request #1852 from gitchs/i1669
+
+Append test case for issue 1669
+296  Merge pull request #1852 from gitchs/i1669
+
+Append test case for issue 1669
+297  Merge pull request #1853 from gitchs/nw_fork
+
+Add test case for issue 1575
+298  Merge pull request #1853 from gitchs/nw_fork
+
+Add test case for issue 1575
+299  Add test case for issue 1575
+300  Append test case for issue 1669
+301  Append uncaughtException listener to process to avoid crash.
+Fix bugs in the test cases' code,to help generate a stable result.
+Update Mocha version to avoid stoping while test case failed.
+302  Merge pull request #1828 from libm/fix_nonzero
+
+Return non-zero when error to inform ninja of the failure.
+303  Merge pull request #1828 from libm/fix_nonzero
+
+Return non-zero when error to inform ninja of the failure.
+304  Merge pull request #1832 from libm/fix_nw_symbols
+
+Make linux_dump_symbols default to be 1
+305  Merge pull request #1832 from libm/fix_nw_symbols
+
+Make linux_dump_symbols default to be 1
+306  Make linux_dump_symbols default to be 1
+
+The linux_dump_sybols is set to 0 in common.gypi:1033, so the default
+value in nw.gypi will be ignored anyways. Removing the % could make this
+option valid.
+307  Return non-zero when error to inform ninja of the failure.
+308  Merge pull request #1804 from gitchs/master
+
+Append nw-quit test case
+309  Merge pull request #1804 from gitchs/master
+
+Append nw-quit test case
+310  Merge pull request #1810 from Mithgol/patch-1
+
+capital “S” in “JavaScript”
+311  Merge pull request #1810 from Mithgol/patch-1
+
+capital “S” in “JavaScript”
+312  capital “S” in “JavaScript”
+313  Fix headless devtools in iframe
+
+Adding back websocket interface in devtools
+314  Append nw-quit test case
+315  [README] Update for 0.8.6
+316  don't force close remote instance with Node support
+
+Still use the 'close' event; Bind Window object on opening
+Remote window with normal frame is still force closed
+
+Fix #1778
+317  Merge pull request #1748 from Ziugy/master
+
+Fixing inaccurate warning logging when accessing properties on windows.
+318  Merge pull request #1748 from Ziugy/master
+
+Fixing inaccurate warning logging when accessing properties on windows.
+319  Update dispatcher_host.cc
+
+Was getting spammed with all these logs in the terminal:
+[24098:0402/164715:WARNING:dispatcher_host.cc(196)] Unknown object: 1 type:Window method:ShowDevTools arguments:[ "", false ]
+[24098:0402/164727:WARNING:dispatcher_host.cc(196)] Unknown object: 2 type:Window method:GetPosition arguments:[  ]
+[24098:0402/164727:WARNING:dispatcher_host.cc(196)] Unknown object: 2 type:Window method:GetPosition arguments:[  ]
+[24098:0402/164727:WARNING:dispatcher_host.cc(196)] Unknown object: 2 type:Window method:GetSize arguments:[  ]
+[24098:0402/164727:WARNING:dispatcher_host.cc(196)] Unknown object: 2 type:Window method:GetSize arguments:[  ]
+
+Fixed this by borrowing the same flow as DispatcherHost::OnCallObjectMethod (line 178).
+320  Merge pull request #1722 from zhchbin/fix_gtk_build
+
+Fix build error on Linux.
+321  Merge pull request #1722 from zhchbin/fix_gtk_build
+
+Fix build error on Linux.
+322  Merge pull request #1716 from falsecz/author
+
+Add self to AUTHORS
+323  Merge pull request #1716 from falsecz/author
+
+Add self to AUTHORS
+324  Fix build error on Linux.
+325  Add self to AUTHORS
+326  Merge pull request #1709 from falsecz/badge
+
+osx icon badge support - setBadgeLabel
+327  Merge pull request #1709 from falsecz/badge
+
+osx icon badge support - setBadgeLabel
+328  osx icon badge support - setBadgeLabel
+329  [README] New download URL
+330  Merge pull request #1684 from jontewks/patch-1
+
+Update license year
+331  Merge pull request #1684 from jontewks/patch-1
+
+Update license year
+332  Update license year
+
+Fix outdated copyright year (updated to 2014).
+The copyright year was out of date. Copyright notices must reflect the current year, so this commit updates the listed year to 2014.
+
+See http://www.copyright.gov/circs/circ01.pdf for more info.
+333  [README] add analytics
+334  Merge pull request #1663 from kingFighter/add-me-to-author
+
+Add self to AUTHORS and correct another contributor's name
+335  Merge pull request #1663 from kingFighter/add-me-to-author
+
+Add self to AUTHORS and correct another contributor's name
+336  Add self to AUTHORS and correct another contributor's name
+337  Merge pull request #1653 from FWeinb/add-me-as-author
+
+Added myself to AUTHORS
+338  Merge pull request #1653 from FWeinb/add-me-as-author
+
+Added myself to AUTHORS
+339  Added myself
+340  Merge pull request #1638 from FWeinb/capturePage-node-buffer
+
+[Fix #480] capturePage using node buffer
+341  Merge pull request #1638 from FWeinb/capturePage-node-buffer
+
+[Fix #480] capturePage using node buffer
+342  Merge pull request #1635 from FWeinb/fix-tray-click-mac
+
+[os x]Add support for tray click event on os x
+343  Merge pull request #1635 from FWeinb/fix-tray-click-mac
+
+[os x]Add support for tray click event on os x
+344  Add handling of mime_types. Support for different datatypes
+345  removed handling of generating datauri. passing raw base64 data to node
+346  Added support for tray click event on os x.
+347  Merge pull request #1608 from clkao/tests-readme
+
+Update tests instructions
+348  Merge pull request #1608 from clkao/tests-readme
+
+Update tests instructions
+349  Merge pull request #1628 from dryabov/master
+
+remove duplicating code
+350  Merge pull request #1628 from dryabov/master
+
+remove duplicating code
+351  remove duplicating code
+352  [CHANGELOG] update for 0.8 branch
+353  [README] update for 0.8.5 (0.8 branch)
+354  Update tests instructions
+355  Merge pull request #1595 from theabraham/add-changelog
+
+add CHANGELOG.md
+356  Merge pull request #1595 from theabraham/add-changelog
+
+add CHANGELOG.md
+357  add CHANGELOG.md
+358  [README] Update branch info
+359  [README] Notes for native module and language
+360  Add Zhao Zeyi to AUTHORS
+361  [WIN] fix build error: invalid file or disk full
+362  [README] update for 0.9.2
+363  [WIN] use ui::GetHiddenWindow()
+
+Fix previous commit
+364  bump version to 0.9.2
+365  Merge pull request #1076 from richardcypher/skiptb
+
+[MAC]implement on mac: hide the window from task bar while keeping it shown
+366  Merge pull request #1076 from richardcypher/skiptb
+
+[MAC]implement on mac: hide the window from task bar while keeping it shown
+367  support inject-js-{start|end} in manifest
+
+Fix #1585
+368  Fix previous commit
+
+GetObjectRegistry()'s signature expect object and
+it should always return one
+369  set window.__nwWindowId in Window.open()
+
+Fix #1519
+370  enable NTLM settings auth-server-whitelist etc
+
+Fix #590
+enables --auth-server-whitelist, --auth-schemes
+--gssapi-library-name, --auth-negotiate-delegate-whitelist
+371  add URLRequestNWAppJob to provide response code
+
+Fix #1314
+372  bump version to 0.9.2-pre
+373  [README] update for 0.9.1
+374  bump version to 0.9.1
+375  update chromium to 32.0.1700.107
+376  bump version to 0.9.1-pre
+377  [README] update for 0.9.0
+378  fix windows build: M_PI undefined
+379  update printing code from upstream
+
+Fix #1545
+380  delete dispatcher objs correctly
+
+Fix crash on quit after reloadDev
+381  use correct breakpad header to prevent upload
+382  Fix previous commit
+383  Fix windows build
+384  bump version to 0.9.0
+385  Fix uncaught exception warnings of SetZoomLevel
+
+Fix #1395
+386  Don't use "Upload" in directory file dialog UI
+
+Fix #1457
+387  bump version to v0.9.0-rc2
+388  remove '--enable-experimental-web-platform-features' from default cmdline
+389  Don't enable experimental webkit features by default
+
+This should be controlled by cmdline arguments as done in
+SetRuntimeFeaturesDefaultsAndUpdateFromArgs().
+
+It's leading to rendering issues and assertion failure in
+debug version.
+390  Merge pull request #1524 from LightTable/master
+
+fix mac build by adding the namespace declaration for breakpad
+391  Merge pull request #1524 from LightTable/master
+
+fix mac build by adding the namespace declaration for breakpad
+392  fix mac build by adding the namespace declaration for breakpad
+
+Signed-off-by: Chris Granger <ibdknox@gmail.com>
+393  [README] update for 0.9.0-rc1
+394  update Chromium to 32.0.1700.77
+395  DispatcherHost owns API objects and deletion
+
+The Window object should be deleted on browser side when
+DispatcherHost is removed (e.g. dev reload), which will then
+trigger decoupling with shell, or it cannot be closed.
+
+Fix #1330
+396  use weak references on DispatcherHost
+
+Fix #1446
+397  set renderer command line arg for user-agent
+
+This will set the default UA in WebKitPlatformSupport
+by content_main_runner.cc
+
+Fix #806
+398  move user-agent composition to GetUserAgentManifest()
+399  methods for the policy object in 'new-win-policy'
+400  add 'new-win-policy' event
+
+Fix #1375 #1290
+401  rename string allocation to v8_str
+402  rename 'inject-js' to 'inject-js-start'; add 'inject-js-end'
+
+See #1372
+403  add 'document-start' event
+404  move 'inject-js' earlier to document-start
+
+See #1372
+405  Merge branch 'master' into rb32
+
+Conflicts:
+	src/mac/app-Info.plist
+	src/nw_version.h
+406  support 'document-end' callback
+407  sync breakpad namespace
+408  inject-js in Window.open options
+409  Window.eval() implementation
+410  rebase fix for windows
+411  Merge branch 'rb32' of /cygdrive/y/nw9/src/content/nw/ into rb32
+
+Conflicts:
+	src/browser/shell_devtools_delegate.cc
+	src/browser/shell_devtools_delegate.h
+	src/chrome_breakpad_client.cc
+412  fix windows build
+413  [README] update for 0.8.4
+414  bump version to 0.8.4
+415  Add a 'quit' parameter to 'close' event cb
+
+On OSX, when user hit 'Cmd-Q', the close event is
+sent with a 'quit' parameter to distinguish with
+other cases for closing window
+
+Fix #430
+416  bump version to 0.9.0-rc1
+417  sync breakpad client
+418  fix mac build
+419  delete old DPH on RVH change
+420  move GrantUniversalPermissions to Content
+421  add missing printing_ui_web_contents_observer files
+422  [rb32] fix window.open
+423  [rb32] fix release build
+424  [rb32] fix devtools
+425  Merge pull request #1408 from kingFighter/test_#1391
+
+[test] test case for fast open&close devtools from #1391
+426  Merge pull request #1408 from kingFighter/test_#1391
+
+[test] test case for fast open&close devtools from #1391
+427  bump browser version to 32.0.1700.57
+428  rebase to Chromium 32
+429  [README] update for 0.8.3
+430  Merge pull request #1398 from kingFighter/tests
+
+[test] update test case for building native modules(node-dtrace-provider...
+431  Merge pull request #1398 from kingFighter/tests
+
+[test] update test case for building native modules(node-dtrace-provider...
+432  bump version to 0.8.3
+433  [test] test case for fast open&close devtools from #1391
+434  [test] simplify test case for native modules using 'typeof'.
+435  [OSX] Free Window object when closing CDT
+
+Fix #1391
+436  [WIN] Handle WM_SIZE in maximize case
+
+Fix #753
+437  [test] update test case for building native modules(node-dtrace-provider, ref, node-lame)
+438  Merge pull request #1388 from kingFighter/tests
+
+[test] temp dir should be removed after app exits
+439  Merge pull request #1388 from kingFighter/tests
+
+[test] temp dir should be removed after app exits
+440  [test] temp dir should be removed after app exits
+441  Call Focus and Blur only for devtools
+
+Fix #1387
+442  bump version to 0.8.3-rc1
+443  Fix crash in ClearCache in some cases
+444  [README] update for 0.8.2
+445  Force close the new-instance window
+446  Free window object on shell destruction
+
+Fix #1364
+447  bump version to 0.8.2
+448  [OSX] support move and resize events
+
+Fix #799
+449  handle return v8 value correctly
+
+or it will crash in v8 win dbg
+450  Clear object registry before quit
+451  [WIN] move and resize event support
+
+Fix #799
+452  [GTK] move and resize event support
+
+Fix #799
+453  SendEvent with multiple arguments
+454  [CDT] object id check on closing
+455  Event support on CDT window object
+456  Check whether to enable threaded compositing
+
+Part of Fix #1340
+457  Merge pull request #1362 from kingFighter/tests
+
+[tset] update snapshot and crash dump
+458  Merge pull request #1362 from kingFighter/tests
+
+[tset] update snapshot and crash dump
+459  [test] disregard the generated dump file's name to update test case of crash dump
+460  [test] rename test case another demo to 1266-snapshot-crash-start under snapshot test case.
+461  Merge pull request #1361 from kingFighter/cookies_api_test
+
+[test] add test case for Window.cookies
+462  Merge pull request #1361 from kingFighter/cookies_api_test
+
+[test] add test case for Window.cookies
+463  [test] add test case for Window.cookies
+464  [README] Fix paragraph for previous commit
+465  [README] update with more introductions
+466  final fix for login dialog: AddRef and Platform changes
+467  [OSX] support for login dialog queue
+468  Fix 35d3248a - Impl login dialog queue to merge multiple login windows
+469  [WIN] support for login dialog queue
+470  [GTK] support for login dialog queue
+471  Impl login dialog queue to merge multiple login windows
+472  Merge pull request #1345 from frankhale/master
+
+Added IRC channel to README.md
+473  Merge pull request #1345 from frankhale/master
+
+Added IRC channel to README.md
+474  Added irc channel to README.md
+475  Merge pull request #1336 from kingFighter/chromium-args-test
+
+[test] update test-case for chromium-args because 'Intl' is not supporte...
+476  Merge pull request #1336 from kingFighter/chromium-args-test
+
+[test] update test-case for chromium-args because 'Intl' is not supporte...
+477  rename 'api' namespace to 'nwapi'
+478  Do not quit on API call on invalid object
+
+Fix #1339
+479  [test] update test-case for chromium-args because 'Intl' is not supported any more in Chrome 30 IIRC.
+480  [README] update for 0.8.1
+481  bump version to 0.8.1
+482  Merge pull request #1321 from kingFighter/tests
+
+[test] add a test case to test document.cookies for 'http', 'file' and 'app' protocol.
+483  Merge pull request #1321 from kingFighter/tests
+
+[test] add a test case to test document.cookies for 'http', 'file' and 'app' protocol.
+484  [WIN] Fix: crash when Back/Forward key is received
+485  [test] add a test case to test document.cookies for 'http', 'file' and 'app' protocol. See issue #1130
+486  use media_id when doing screen capture
+
+Fix #1309
+487  Audio gets choppy when the device list is duplicated
+
+Fix #1270
+488  Merge pull request #1315 from kingFighter/tests
+
+[test] Update test case for snapshot
+489  Merge pull request #1315 from kingFighter/tests
+
+[test] Update test case for snapshot
+490  Wrap devtools window for access from JS
+491  [test] Update test case for snapshot
+492  API impl refactor: Id allocation and global object register in browser
+
+This is mainly for dealing with Window in new renderer process, where
+multiple dispatcher hosts should share the same object registry. And
+the Id allocation on the renderer side is moved to the browser side to
+keep the id global across multiple renderers.
+493  Cookie API: cookies.onChanged.addListener and removeListener
+494  CookieAPI: remove, set and refactoring
+495  Cookie API: Use req id to match call and callback
+496  APIContext for cookies API
+497  bump version to 0.8.1-rc1
+498  Allow wait in nw method handlers
+499  Fix debug build: ClearCache() should return
+500  implement Window.cookie.getAll
+501  implement Window.cookies.get
+502  rename capturepagedone to __nw_capturepagedone
+503  Merge pull request #1267 from kingFighter/crash_dump_test
+
+[test] fix crashBrowser case
+504  Merge pull request #1267 from kingFighter/crash_dump_test
+
+[test] fix crashBrowser case
+505  [test] fix crashBrowser case
+506  [README] update for 0.8.0
+507  Mac: fallback to en-US.pak on missing locale.pak
+508  Win: embedding manifest to fix tooltip
+509  Mac: Fix --lang support
+510  bump version to 0.8.0
+511  Linux: turn on linux_dump_symbols by default
+512  Override lang setting from cmdline argument
+513  Merge pull request #1244 from kingFighter/tests
+
+[test] test case for issue #1236--App Crashes when you try to open a win...
+514  Merge pull request #1244 from kingFighter/tests
+
+[test] test case for issue #1236--App Crashes when you try to open a win...
+515  Merge pull request #1238 from kingFighter/crash_dump_test
+
+[test] Test-case for crash dump
+516  Merge pull request #1238 from kingFighter/crash_dump_test
+
+[test] Test-case for crash dump
+517  Add qvalue to 'Accept-Language' header
+518  Use current locale in Header 'Accept-Language'
+
+Fix #1240
+519  [test] test case for issue #1236--App Crashes when you try to open a window after previously closing a window
+520  [test] test case for issue #1236--App Crashes when you try to open a window after previously closing a window
+521  [test] Test-case for crash dump
+522  Avoid double free in MediaCaptureDevicesDispatcher
+
+Fix e7d3a58be0047c15ea1105e7686bfc1ec8de160c
+523  Support media enumerable API from upstream 30
+
+sync with upstream c129874dc579801d403c521fe0ebe38fbc1cf2f2
+Fix #632
+524  Fix crash on exit: PageClickTracker is deleted twice
+525  Linux: make frameless window resizable
+
+Merge upstream patch from #169010; Fix #142
+526  Escape apostrophe properly
+
+Fix #1206
+527  Merge pull request #1125 from richardcypher/fix_crash_onreload
+
+[test]fix bug of crash on reload
+528  Merge pull request #1125 from richardcypher/fix_crash_onreload
+
+[test]fix bug of crash on reload
+529  [README] update for 0.8.0-rc1
+530  Rename 'linux_symbols' for name conflicts
+531  bump version to 0.8.0-rc1
+532  Use entered context only for static call
+
+Fix a1d382dd4ae50db69c0430b90f7e81faa75edd63
+533  allow IO in nw event handlers
+534  Merge pull request #1193 from kingFighter/tests
+
+Update test cases
+535  Merge pull request #1193 from kingFighter/tests
+
+Update test cases
+536  Fix autocomplete regression
+537  Merge pull request #1198 from zhchbin/issue_1168
+
+Fix -webkit-app-region: drag don't work any more once it maximized.
+538  Merge pull request #1198 from zhchbin/issue_1168
+
+Fix -webkit-app-region: drag don't work any more once it maximized.
+539  Mac i18n: locale packaging and integration
+
+Using user default locale in node-webkit
+540  Mac i18n: add i18n script and all translations
+541  mac menu i18n
+542  Pass system locale to renderer
+
+Fix #669; Fix #103
+543  update to Chromium 30.0.1599.66
+544  add chromium version to 'nw:version"
+545  Fix -webkit-app-region: drag don't work any more once it maximized. Part of #1168.
+
+This feature is broken by commit da2b25c991d8c9b505fce21ac5a331057c726c25.
+
+TEST=1. Run the nw-sample-apps\frameless-window;
+            2. Show the titlebar by cliking "Top Titlebar"
+            3. Double click the maximize the windows.
+            4. Double click the tilte bar should be able to unmaximize the window.
+546  Fix 1421ea5965c2ec6e0242f73dfed94963a023af9b
+547  replace webkit ImageDecoder
+548  Get current RenderView based on Entered context
+
+The extension's function is compiled in the first
+window's context. It's needed to get the caller's
+context.
+
+Fix #1187
+549  fix 773b4579a5cefb00c061820315462b8a6be5fe29
+550  [test] Update source maps test case
+551  [test] Update save_devtools_settings test case
+552  add left files of c2ae16e268dbb491
+553  add 'devtools-closed'; always send 'devtools-opened'
+554  Fix crash on requesting quota of filesys API
+555  API: Window.isDevToolsOpen
+
+Query the status of devtools window
+556  [WIN] Fix urlbar focus issue
+
+urlbar was changed to View based in upstream; the webview needs
+to be properly focused to move focus away from urlbar, or urlbar
+won't take focus again since it thinks it is focused already
+557  Linux: save only stack dump for breakpad; msg on dump
+558  Mac: install crash_inspector
+559  Mac: disable breakpad reporter
+560  Mac: fix crash inspector & reporter app's location
+561  Mac:  support setting crash dump path
+562  Win: support setting crash dump path
+563  API: App.setCrashDumpDir
+564  Linux: support setting crash dump path
+565  tried to move crash dump initialization earlier
+566  Linux: don't upload renderer dumps
+567  Mac: fix breakpad build errors
+568  Win: fix breakpad build error
+569  Linux: keep temporary crash dump file
+570  disable crash handler in Zygote process
+571  Linux: enable crash handler in renderer process
+572  App.crashRenderer
+
+For testing breakpad support
+573  Merge branch 'master' of https://github.com/rogerwang/node-webkit
+
+Conflicts:
+	nw.gypi
+	src/chrome_breakpad_client_mac.mm
+574  breakpad support for mac
+575  App.crashBrowser
+
+For testing breakpad support
+576  App.crashBrowser
+
+For testing breakpad support
+577  crash report fix for win
+578  breakpad support for windows
+579  breakpad support on linux
+580  crash report fix for win
+581  update googleurl include path
+582  rebase fix: nw.gypi
+583  breakpad support for windows
+584  breakpad support on linux
+585  bump version to 0.8.0-pre
+586  fix rebase30 on windows
+587  rebase fix for mac
+588  update to chromium 30
+589  [README] update for 0.7.5
+590  bump version to 0.7.5
+591  Fix #1130: regression: document.cookies with normal protocols
+592  Fix #1130: regression: document.cookies with normal protocols
+593  [README] update for 0.7.4
+594  'strip' target is only for Linux
+595  fix bug of crash on reload
+596  bump version to 0.7.4
+597  Merge branch 'master' of https://github.com/richardcypher/node-webkit into skiptb
+598  Merge branch 'master' of https://github.com/richardcypher/node-webkit into skiptb
+599  support filesys api for app protocol
+600  support document.cookie for app protocol
+
+part of req for #1012
+601  Merge pull request #1100 from richardcypher/makeheader
+
+[tools]write a python script to generate tarball
+602  Merge pull request #1100 from richardcypher/makeheader
+
+[tools]write a python script to generate tarball
+603  Merge pull request #1089 from richardcypher/fixuseragent
+
+[test]fix the file path of user-agent-app test
+604  Merge pull request #1089 from richardcypher/fixuseragent
+
+[test]fix the file path of user-agent-app test
+605  Merge pull request #1090 from richardcypher/reloadcrash
+
+[test]add test case for crash when reloading with devtool opened
+606  Merge pull request #1090 from richardcypher/reloadcrash
+
+[test]add test case for crash when reloading with devtool opened
+607  Fix #904: support 'ignore-certificate-errors' in some cases
+608  Fix #904: support 'ignore-certificate-errors' in some cases
+609  #1095: fix crash on accessing object in new instance
+610  strip linux binary on dist
+611  implement AllowCertificateError
+
+Fix #1103: Ssl certificate errors should
+report error immediately, not time out
+612  Fix #1112: App.dataPath should be a string
+613  Fix #1112: App.dataPath should be a string
+614  fix color chooser for mac
+615  fix color chooser for windows
+616  Fix 583: support for color chooser
+617  [WIN] No need to get IPC fd
+
+fix build error for previous commit
+618  set fds to be closed in child process spawned by Node
+
+Fix #1096
+619  bump version to 0.7.4-pre
+620  write a python script to generate tarball
+621  [README] update for 0.7.3
+622  generate and distribute credits.html
+623  support 'no-edit-menu' option in manifest
+624  bump version to 0.7.3
+625  Merge pull request #1053 from ywkim/app-reopen-event
+
+[Mac] Add app 'reopen' event
+626  Merge pull request #1053 from ywkim/app-reopen-event
+
+[Mac] Add app 'reopen' event
+627  Added myself to AUTHORS
+628  add test case for crash when reloading with devtool opened
+629  fix the file path of user-agent-app test
+630  [Mac] Fix #1043: don't constrian window frame
+631  [Mac] Fix #1043: don't constrian window frame
+632  add window.closeDevTools()
+633  add process.versions['chromium']
+
+Fix #1052
+634  [README] Add guide for redistributing the binary with license notice
+
+Fix #1081
+635  Mac: implement 'focus' property of Window to set initial focus
+
+For #424
+636  Win: implement 'focus' property of Window to set initial focus
+
+Fix #424
+637  set transport_security_state for HTTPS connections
+
+So we can launch https sites in debug mode
+638  Linux: implement 'focus' property of Window to set initial focus
+
+For #424
+639  Implement SetShowInTaskbar on mac
+640  [API][GTK] Implement SetShowInTaskbar in GTK. Part #251
+641  [API][WIN] Fix the SetShowInTaskbar didn't work well on Windows XP. Part #251
+642  [API][WIN] Add show in taskbar API, both method and Window Subfields. Part #251
+643  Merge pull request #1066 from kingFighter/tests
+
+[test] Update user-agent test case to cover reload and child window.
+644  Merge pull request #1066 from kingFighter/tests
+
+[test] Update user-agent test case to cover reload and child window.
+645  [test] Update user-agent test case to cover reload and child window.
+646  bump version to 0.7.3-pre
+647  App 'reopen' event
+648  Merge pull request #1040 from alex-ter/nw-manual-test-#72
+
+[manual testcase] Added manual test for issue #72
+649  Merge pull request #1040 from alex-ter/nw-manual-test-#72
+
+[manual testcase] Added manual test for issue #72
+650  Fix showDevTools argument handling for dev jail
+
+the bug is: clicking the gears button doesn't clear the
+cached jail target
+651  Merge pull request #1038 from richardcypher/nwinmem
+
+[test]revise the timeout of nw-in-mem test
+652  Merge pull request #1038 from richardcypher/nwinmem
+
+[test]revise the timeout of nw-in-mem test
+653  [manual testcase] Added manual test for issue #72
+654  revise the timeout of nw-in-mem test
+655  Merge pull request #1037 from kingFighter/fix-test-cases
+
+[test] fix reload_application bugs
+656  Merge pull request #1037 from kingFighter/fix-test-cases
+
+[test] fix reload_application bugs
+657  [test] fix reload_application bugs
+658  Merge pull request #1035 from richardcypher/revisetimeout
+
+[test]revise timeout of some tests
+659  Merge pull request #1035 from richardcypher/revisetimeout
+
+[test]revise timeout of some tests
+660  [README] update for 0.7.2
+661  revise timeout of some tests
+662  [WIN] fix logging initialization; SEGV on start
+663  fix devtools launch crash
+664  bump version to 0.7.2
+665  disable writing to debug.log by default
+
+Fix #1031
+666  Merge pull request #1022 from alex-ter/nw-manual-test-#434
+
+[manual testcase] Added test for issue #434
+667  Merge pull request #1022 from alex-ter/nw-manual-test-#434
+
+[manual testcase] Added test for issue #434
+668  Merge pull request #1020 from richardcypher/nwinmem
+
+[test]add case for #984
+669  Merge pull request #1020 from richardcypher/nwinmem
+
+[test]add case for #984
+670  [manual testcase] Added test for issue #434
+671  add test case for #984
+672  support passing frame element to Window.showDevToolsJail()
+673  Fix 984: delete shell obj asap in force close case
+674  check ptr to shell in platform event handlers
+675  make pointers to shell weak
+676  fix the bug of appescaping about window not closing
+677  Merge pull request #1011 from kingFighter/test-case-#486
+
+[test] test case for #486: Application Crash when quitting with secondary window on top
+678  Merge pull request #1011 from kingFighter/test-case-#486
+
+[test] test case for #486: Application Crash when quitting with secondary window on top
+679  Merge pull request #1010 from richardcypher/appescape
+
+[test]fix bugs of useragentapp and pathescape test cases
+680  Merge pull request #1010 from richardcypher/appescape
+
+[test]fix bugs of useragentapp and pathescape test cases
+681  [test] test case for #486: Application Crash when quitting with secondary window on top
+682  [test] test case for #486: Application Crash when quitting with secondary window on top
+683  fix bugs of useragentapp and pathescape test cases
+684  bump version to 0.7.2-pre
+685  Merge pull request #1009 from kingFighter/single-instance
+
+[test] update test case for single instance with open method in Mac
+686  Merge pull request #1009 from kingFighter/single-instance
+
+[test] update test case for single instance with open method in Mac
+687  [test] update test case for single instance with open method in Mac
+688  [README] update for 0.7.1
+689  bump version to 0.7.1
+690  Merge pull request #1003 from kingFighter/reportMsg
+
+Report a clear message to user when nw.pak is missing
+691  Merge pull request #1003 from kingFighter/reportMsg
+
+Report a clear message to user when nw.pak is missing
+692  Fix #486: should delete Shell object on native window destruction
+
+Or the platform events will be sent, and then deleted Shell object
+is referred.
+693  Fix #486: should delete Shell object on native window destruction
+
+Or the platform events will be sent, and then deleted Shell object
+is referred.
+694  Report a clear message to user when nw.pak is missing
+695  Merge pull request #991 from kingFighter/tools
+
+Make the 'dist' build target depends on 'chromedriver2_server' target.
+696  Merge pull request #991 from kingFighter/tools
+
+Make the 'dist' build target depends on 'chromedriver2_server' target.
+697  Merge pull request #1002 from richardcypher/app_path
+
+[test]add test case for windows app path escaping
+698  Merge pull request #1002 from richardcypher/app_path
+
+[test]add test case for windows app path escaping
+699  Merge pull request #1001 from kingFighter/chromedriver
+
+Simply test if chromedriver works
+700  Merge pull request #1001 from kingFighter/chromedriver
+
+Simply test if chromedriver works
+701  Fix #987: show with proper maximize state
+702  Fix #987: show with proper maximize state
+703  render widget should be closed before quit app
+
+Fix #984
+
+content::AudioRendererMixerManager::RemoveMixer is called in RenderWidget::Close
+704  add test case for windows app path escaping
+705   Simply test if chromedriver works
+706  Merge remote-tracking branch 'origin/master' into tools
+
+Conflicts:
+	tools/package_binaries.py
+707  Merge pull request #989 from richardcypher/master
+
+fix dist target on mac is broken
+708  Merge pull request #989 from richardcypher/master
+
+fix dist target on mac is broken
+709  Transform app url to file url in app protocol handler
+
+Fix #990; Or the host name will be treated as network share host name
+710  Check script handle correctly
+
+Fix commit 882a05f36252b044a9bbed752328627392e73a8c
+711  Merge pull request #980 from kingFighter/single-instance
+
+Refactor test case for single instance
+712  Merge pull request #980 from kingFighter/single-instance
+
+Refactor test case for single instance
+713  escape root path for JS correctly
+
+or the application cannot start in directory like C:\xdk
+714  Fix wrong chromedriver2_server.exe name in windows
+715  Make the 'dist' build target depends on 'chromedriver2_server' target.
+And  make an additional tarball/zip to distribute the chromedriver2_server binary.
+716  fix dist target on mac is broken
+717  Test case for single-instance with `open` method in Mac
+718  enable the screen capture support for getUserMedia
+
+Fix #576
+719  bump version to 0.7.1-pre
+720  [README] update for 0.7.0
+721  Merge pull request #977 from kingFighter/test-frame
+
+Add an option of test framework to list all tests
+722  Merge pull request #977 from kingFighter/test-frame
+
+Add an option of test framework to list all tests
+723  Add an option of test framework to list all tests
+724  bump version to 0.7.0
+725  search for pending render view host to get to shell
+
+Fix devreload crash in the msg handler of grant universal permission
+726  rebase fix for win: add chrome_process_finder
+727  construct command line string properly on windows
+
+Fix commit 72254df
+728  sync print_job.cc to fix build error
+729  Merge pull request #962 from richardcypher/master
+
+[test]fix the exception that's raised by proxy test
+730  Merge pull request #962 from richardcypher/master
+
+[test]fix the exception that's raised by proxy test
+731  Merge pull request #956 from kingFighter/win
+
+Fix build errors on Windows
+732  Merge pull request #956 from kingFighter/win
+
+Fix build errors on Windows
+733  fix the exception that's raised by proxy test
+734  pass full command line with open event
+
+See #726
+735  Fix single-instance failed on window
+736  Refactor test case for single instance
+737  Merge pull request #955 from richardcypher/fileinput
+
+[test]test case for setting file input value
+738  Merge pull request #955 from richardcypher/fileinput
+
+[test]test case for setting file input value
+739  Merge pull request #959 from richardcypher/fixcrash
+
+[test]fix the crash caused by node test part
+740  Merge pull request #959 from richardcypher/fixcrash
+
+[test]fix the crash caused by node test part
+741  Merge pull request #958 from richardcypher/focus
+
+[test]add #933 (focus) to (manual) test cases
+742  Merge pull request #958 from richardcypher/focus
+
+[test]add #933 (focus) to (manual) test cases
+743  not using tcmalloc on OSX
+744  fix the crash caused by node test part
+745  Change ViewHierarchyChanged's signature and implementation
+746  add #933 (focus) to (manual) test cases
+747  add #933 (focus) to (manual) test cases
+748  Merge pull request #954 from kingFighter/window
+
+Test case for #948:
+749  Merge pull request #954 from kingFighter/window
+
+Test case for #948:
+750  Fix build errors on Windows
+751  test case for setting file input value
+752  Test case for #948: focus event isn't sent to 1st window after window with new-instance is opened
+753  Test case for #948: focus event isn't sent to 1st window after window with new-instance is opened
+754  Don't bind the current shell when create the new-instance Window
+
+Fix #948
+755  support setting the value of a file input
+
+Fix #927 . Users can do this to set the input:
+var f = new File('/path/to/file', 'name');
+var files = new FileList();
+files.append(f);
+document.getElementById('input0').files = files;
+756  Merge pull request #950 from kingFighter/mac
+
+Fix build errors on Mac
+757  Merge pull request #950 from kingFighter/mac
+
+Fix build errors on Mac
+758  Fix build errors on Mac
+759  Merge pull request #947 from richardcypher/fixstall
+
+[test]fix the stall of save_devtools_setting
+760  Merge pull request #947 from richardcypher/fixstall
+
+[test]fix the stall of save_devtools_setting
+761  fix the stall of save_devtools_setting
+762  Merge pull request #946 from kingFighter/docs
+
+update README.md about local server
+763  Merge pull request #946 from kingFighter/docs
+
+update README.md about local server
+764  update README.md about local server
+765  Merge pull request #944 from kingFighter/server
+
+Add test case for App.clearCache etc.
+766  Merge pull request #944 from kingFighter/server
+
+Add test case for App.clearCache etc.
+767  Add test case for App.clearCache
+768  Merge test case for App.manifest
+769  Add cache support for local server
+770  [API] Get the value of manifest
+
+Fix #360
+771  test case for App.manifest
+
+relate to #360
+772  fix relative require module path for app://
+773  turn on Node for app://
+774  Merge pull request #941 from silvinci/readme
+
+Readme
+775  Merge pull request #941 from silvinci/readme
+
+Readme
+776  support 'app' protocol; Fix #363
+
+app://<host>/path. The 'host' part is essential
+777  Add issue note
+778  Fix some grammar / Indent code
+779  Merge remote-tracking branch 'origin/master'
+780  rebase to chrome 29
+781  Merge pull request #914 from SamLiu79/remove_alert_title
+
+remove alert title on OSX
+782  Merge pull request #914 from SamLiu79/remove_alert_title
+
+remove alert title on OSX
+783  Merge pull request #915 from richardcypher/tests
+
+add test case for getproxyforurl in windows and fix bugs of remote-img
+784  Merge pull request #915 from richardcypher/tests
+
+add test case for getproxyforurl in windows and fix bugs of remote-img
+785  add test case for getproxyforurl in windows and fix bugs of remote-img
+786  remove alert title on OSX
+787  Merge pull request #911 from kingFighter/run-smoothly
+
+[test] update console and calls_across_window to run smoothly
+788  Merge pull request #911 from kingFighter/run-smoothly
+
+[test] update console and calls_across_window to run smoothly
+789  Merge pull request #912 from kingFighter/server
+
+[test] use nodejs to set up server instead of apache
+790  Merge pull request #912 from kingFighter/server
+
+[test] use nodejs to set up server instead of apache
+791  [test] change port to avoid with other servers
+792  [test] use nodejs to set up server instead of apache
+793  bump version to 0.7.0-pre
+794  [test] update console and calls_across_window to run smoothly
+795  [README] update for 0.6.3
+796  Merge pull request #908 from kingFighter/mac
+
+[tool] fix 'dist' target wrong package name on Mac and Win
+797  Merge pull request #908 from kingFighter/mac
+
+[tool] fix 'dist' target wrong package name on Mac and Win
+798  [tool] fix 'dist' target wrong package name on Mac and Win
+799  bump version to 0.6.3
+800  Use SS_NOPREFIX for windows dialog text
+
+This will keep the ampersands character
+Fix #901
+801  Merge pull request #900 from kingFighter/dist
+
+[tool] fix building the 'dist' target on Mac
+802  Merge pull request #900 from kingFighter/dist
+
+[tool] fix building the 'dist' target on Mac
+803  [tool] fix building the 'dist' target on Mac
+804  Merge pull request #532 from zhchbin/issue528
+
+[API][WIN] "position": "mouse" support on Windows.
+805  Merge pull request #532 from zhchbin/issue528
+
+[API][WIN] "position": "mouse" support on Windows.
+806  Merge pull request #894 from richardcypher/tests
+
+fix the crash when running remote-file-access on windows
+807  Merge pull request #894 from richardcypher/tests
+
+fix the crash when running remote-file-access on windows
+808  Merge branch 'master' of https://github.com/rogerwang/node-webkit into tests
+809  Merge branch 'master' of https://github.com/rogerwang/node-webkit into tests
+810  [test] fix bug about save devtools' settings on Mac
+811  disable nw to run remote img on windows
+812  Merge pull request #892 from kingFighter/issue98
+
+[test] fix bug about save devtools' settings on Mac
+813  Merge pull request #892 from kingFighter/issue98
+
+[test] fix bug about save devtools' settings on Mac
+814  [test] fix bug about save devtools' settings on Mac
+815  Merge pull request #888 from kingFighter/issue98
+
+[test] automatic test case for save devtools' settings
+816  Merge pull request #888 from kingFighter/issue98
+
+[test] automatic test case for save devtools' settings
+817  [test] automatic test case for save devtools' settings
+818  override origin for dom storage of devtools
+
+Fix #98
+819  Merge pull request #878 from kingFighter/single-instance
+
+[test] automatic test case for single-instance
+820  Merge pull request #878 from kingFighter/single-instance
+
+[test] automatic test case for single-instance
+821  Merge pull request #877 from richardcypher/tests
+
+add test case for loading remote img
+822  Merge pull request #877 from richardcypher/tests
+
+add test case for loading remote img
+823  Merge pull request #881 from haihappen/patch-1
+
+Updates quick start instructions.
+824  Merge pull request #881 from haihappen/patch-1
+
+Updates quick start instructions.
+825  Merge pull request #882 from Roland1975/master
+
+Add HTML5 doctype
+826  Merge pull request #882 from Roland1975/master
+
+Add HTML5 doctype
+827  add HTML5 doctype
+828  Updates quick start instructions.
+
+I was tired of googling the right syntax of the zip command, so I added it to the quick start instructions.
+829  Merge pull request #879 from Mithgol/patch-1
+
+link to https://github.com/rogerwang/node-webkit/wiki/Using-Node-modules in README.md
+830  Merge pull request #879 from Mithgol/patch-1
+
+link to https://github.com/rogerwang/node-webkit/wiki/Using-Node-modules in README.md
+831  link to https://github.com/rogerwang/node-webkit/wiki/Using-Node-modules in README
+
+The wiki page has been renamed (#823), and the former link is no longer valid.
+832  [test] automatic test case for single-instance
+833  add test case for load remote img(need to put index.html under imgshown to server doc root)
+834  Add App.getProxyForURL() to query proxy for URL
+
+Fix #130
+835  Grant file: scheme to the renderer processes
+
+Fix #871
+836  Revert "[test] convert manual test case "tray" to automatic"
+
+This reverts commit 522aec266ddbf8b3f9bfdc26d5a648db5a89bd73.
+837  Merge pull request #860 from kingFighter/tray-test-case
+
+[test] convert manual test case "tray" to automatic
+838  Merge pull request #860 from kingFighter/tray-test-case
+
+[test] convert manual test case "tray" to automatic
+839  Merge pull request #857 from kingFighter/tests
+
+[test] convert manual test case 'source maps' to automatic
+840  Merge pull request #857 from kingFighter/tests
+
+[test] convert manual test case 'source maps' to automatic
+841  Merge pull request #861 from richardcypher/tests
+
+mkdir dataPath and data-cash for test
+842  Merge pull request #861 from richardcypher/tests
+
+mkdir dataPath and data-cash for test
+843  auto create dir and remove
+844  [test] convert manual test case "tray" to automatic
+845  Merge pull request #859 from richardcypher/tests
+
+add four cases to the test case and fix bugs of useragent app
+846  Merge pull request #859 from richardcypher/tests
+
+add four cases to the test case and fix bugs of useragent app
+847  Merge branch 'tests' of https://github.com/richardcypher/node-webkit into tests
+848  Merge branch 'tests' of https://github.com/richardcypher/node-webkit into tests
+849  [devtools] use separate process correctly
+
+In Ubuntu 12 VM for some reason SiteInstanceImpl::GetProcess
+is called multiple times later in LoadURL and we should unpin
+renderer correctly
+
+content::SiteInstanceImpl::GetProcess()
+content::SiteInstanceImpl::HasWrongProcessForURL()
+content::RenderViewHostManager::GetSiteInstanceForEntry()
+content::RenderViewHostManager::UpdateRendererStateForNavigate()
+content::RenderViewHostManager::Navigate()
+content::NavigationControllerImpl::NavigateToPendingEntry()
+content::NavigationControllerImpl::LoadEntry()
+content::NavigationControllerImpl::LoadURLWithParams()
+content::NavigationControllerImpl::LoadURL()
+
+content::SiteInstanceImpl::GetProcess()
+content::RenderViewHostImpl::RenderViewHostImpl()
+content::RenderViewHostFactory::Create()
+content::RenderViewHostManager::CreateRenderView()
+content::RenderViewHostManager::UpdateRendererStateForNavigate()
+content::RenderViewHostManager::Navigate()
+content::NavigationControllerImpl::NavigateToPendingEntry()
+content::NavigationControllerImpl::LoadEntry()
+content::NavigationControllerImpl::LoadURLWithParams()
+content::NavigationControllerImpl::LoadURL()
+
+fix bugs of useragentapp and datapath
+850  Merge branch 'tests' of https://github.com/richardcypher/node-webkit into tests
+851  Merge branch 'tests' of https://github.com/richardcypher/node-webkit into tests
+852  fix bugs of useragentapp and datapath
+853  fix some bug and rm some files
+854  Merge branch 'master' of https://github.com/rogerwang/node-webkit into tests
+855  Merge branch 'master' of https://github.com/rogerwang/node-webkit into tests
+856  fix the bug that throw exception when run all tests
+857  [devtools] use separate process correctly
+
+In Ubuntu 12 VM for some reason SiteInstanceImpl::GetProcess
+is called multiple times later in LoadURL and we should unpin
+renderer correctly
+
+content::SiteInstanceImpl::GetProcess()
+content::SiteInstanceImpl::HasWrongProcessForURL()
+content::RenderViewHostManager::GetSiteInstanceForEntry()
+content::RenderViewHostManager::UpdateRendererStateForNavigate()
+content::RenderViewHostManager::Navigate()
+content::NavigationControllerImpl::NavigateToPendingEntry()
+content::NavigationControllerImpl::LoadEntry()
+content::NavigationControllerImpl::LoadURLWithParams()
+content::NavigationControllerImpl::LoadURL()
+
+content::SiteInstanceImpl::GetProcess()
+content::RenderViewHostImpl::RenderViewHostImpl()
+content::RenderViewHostFactory::Create()
+content::RenderViewHostManager::CreateRenderView()
+content::RenderViewHostManager::UpdateRendererStateForNavigate()
+content::RenderViewHostManager::Navigate()
+content::NavigationControllerImpl::NavigateToPendingEntry()
+content::NavigationControllerImpl::LoadEntry()
+content::NavigationControllerImpl::LoadURLWithParams()
+content::NavigationControllerImpl::LoadURL()
+858  Merge branch 'tests' of https://github.com/kingFighter/node-webkit into tests
+859  Merge branch 'tests' of https://github.com/kingFighter/node-webkit into tests
+860  [test] convert manual test case "source maps" to automatic
+861  [test] update console.log
+862  Merge branch 'master' of https://github.com/rogerwang/node-webkit into tests
+863  Merge branch 'master' of https://github.com/rogerwang/node-webkit into tests
+864  add all four cases for the data path
+865  bump version to 0.6.3-pre
+866  remove unused temp dir variable
+867  Deleting temp dir properly
+
+Fix #815
+868  Merge pull request #854 from richardcypher/tests
+
+test case for data path of chromium args
+869  Merge pull request #854 from richardcypher/tests
+
+test case for data path of chromium args
+870  fix test case for data path of chromium args
+871  undo the change in package.json
+872  add test case for the data-path argument for chromium args
+873  add test case for the data-path argument for chromium args
+874  Merge pull request #853 from richardcypher/tests
+
+autotest for user agent when creating a new app
+875  Merge pull request #853 from richardcypher/tests
+
+autotest for user agent when creating a new app
+876  autotest for user agent when creating a new app
+877  [test] update console.log
+878  Merge pull request #849 from kingFighter/tests
+
+[test] automatic test case for console.log
+879  Merge pull request #849 from kingFighter/tests
+
+[test] automatic test case for console.log
+880  [README] update for 0.6.2
+881  Fix 8247d63 for Win
+882  Fix 8247d63 for Win
+883  bump version to 0.6.2
+884  New app finding on startup; Fix #843
+
+nw will search for app as proposed in #843:
+
+1. search in the end of executable
+2. search for manifest in the same directory with executable
+3. search for 'package.nw' in the same directory with executable
+4. search in the first argument for app
+885  [test] fix test case for console.log
+886  [test] automatic test case for console.log
+887  include autofill msgs in IPC logging
+888  [Mac] adding comments for the previous commit
+889  [Mac] show the window without the focus side effect
+
+Fix #497
+
+This fix also brings the window to front when launch from terminal
+890  [test] fix path for snapshot case on Mac
+891  call devtools jail setter only when node is enabled
+
+or there would be reports that 'require()' is not defined
+when opening devtools. Fix #809
+892  embed manifest to apply visual style for tooltip
+
+Fix #72 #810
+893  fix the 2MB value limit in dom_storage_quota
+894  [tools] add make-nw-headers.sh
+895  Merge pull request #812 from owenc4a4/test
+
+[test] add description for file dialog & add self to AUTHORS
+896  Merge pull request #812 from owenc4a4/test
+
+[test] add description for file dialog & add self to AUTHORS
+897  add self to AUTHORS
+898  [test] add description for file dialog
+899  [README] fix link for release notes
+900  bump version to 0.6.2-pre
+901  [README] update for 0.6.1
+902  send App.quit correctly when the last window closed
+903  bump version to 0.6.1
+904  rename 'nw_package_bin' to 'dist'
+905  send App.open and App.quit event to all windows
+
+Fix #787
+906  Setting context data for debugger in Node context
+
+This helps to show Node scripts in Devtools
+907  [API] App.dataPath support
+908  Fix dom_storage_quota
+909  Merge pull request #752 from owenc4a4/test
+
+[test]test case for source maps & modify json reporter
+910  Merge pull request #752 from owenc4a4/test
+
+[test]test case for source maps & modify json reporter
+911  enable DevTools process with Node
+
+It should have powerful permissions to access local files
+via XHR (e.g. source map). Fix #727 and #95 again.
+912  [test] test case for source maps
+913  [test]modify json reporter
+
+  add error stack for failures
+  only show failure test which we only been insterested
+914  bump version to 0.6.1-pre
+915  update for 0.6.0
+916  bump version to 0.6.0
+917  Merge pull request #795 from greenheartgames/master
+
+set windows icon correctly
+918  Merge pull request #795 from greenheartgames/master
+
+set windows icon correctly
+919  [WIN] Set correct windows icon size
+
+The icon in the win7 audio mixer is too big
+920  rename dom-storage-quota to dom_storage_quota
+921  remove macros which is not effective
+922  update for 0.6.0-rc1
+923  bump mac version to 0.6.0
+924  Merge pull request #778 from greenheartgames/master
+
+implement App.clearCache
+925  Merge pull request #778 from greenheartgames/master
+
+implement App.clearCache
+926  implement App.clearCache() for clearing the whole cache
+927  setting dom storage quota from manifest
+928  Support audio buffer size setting in manifest
+929  bump to version 0.6.0-rc1
+930  sync with upstream version 28.0.1500.11
+931  fix crm28 on windows
+932  mac fix
+933  remove singleton lock on exit properly
+934  headless devtools and devtools-opened event
+935  devtools jail feature
+936  fix gtk crash on contextmenu
+
+Fix #721
+937  rebase fix
+938  rebase to crm28
+939  Merge pull request #762 from ghostandthemachine/master
+
+Fix typo in logging allocation of object with unknown type
+940  Merge pull request #762 from ghostandthemachine/master
+
+Fix typo in logging allocation of object with unknown type
+941  fix typo in logging allocation of unkown type
+942  Merge pull request #709 from heavyk/master
+
+fix tests on OSX
+943  Merge pull request #709 from heavyk/master
+
+fix tests on OSX
+944  my exec_root could be `node-webkit Helper.app`
+
+specifically,
+"src/out/Release/node-webkit.app/Contents/Frameworks/node-webkit Helper.app/Contents/MacOS/node-webkit"
+945  race condition where test was ran before files were copied
+946  missing required callbacks to async functions
+947  Merge pull request #698 from GnorTech/master
+
+fix out-of-fd issue on OSX
+948  Merge pull request #698 from GnorTech/master
+
+fix out-of-fd issue on OSX
+949  fix out-of-fd on Mac
+
+Sometimes app are loading large number of resources in a short period
+of time. This will hit the limit of fd on Mac (256)
+950  Merge pull request #595 from sonicsnes/pull-594
+
+Only apply clickthrough bounds when resizable
+951  Merge pull request #595 from sonicsnes/pull-594
+
+Only apply clickthrough bounds when resizable
+952  Override the user agent value of child window using the the one of its parent window.
+
+Fix #597.
+953  Merge pull request #695 from owenc4a4/test
+
+[test]formatted the output of json_reporter
+954  Merge pull request #695 from owenc4a4/test
+
+[test]formatted the output of json_reporter
+955  [test]formatted the output of json_reporter
+956  Merge pull request #694 from owenc4a4/test
+
+update tool and test module
+957  Merge pull request #694 from owenc4a4/test
+
+update tool and test module
+958  [test]update nw_test_app module
+959  [tool] modify build_native_module
+960  Merge pull request #686 from zhchbin/issue72
+
+[WIN] Enabling Visual Styles, so that tooltips can show up. Fix #72.
+961  Merge pull request #686 from zhchbin/issue72
+
+[WIN] Enabling Visual Styles, so that tooltips can show up. Fix #72.
+962  [WIN] Enabling Visual Styles, so that tooltips can show up. Fix #72.
+963  [WIN] Enabling Visual Styles, so that tooltips can show up. Fix #72.
+964  [README] update for 0.5.1
+965  bump version to 0.5.1
+966  Remember default isolate for ProxyResolverV8
+
+Fix #663
+967  bump version to 0.5.1-pre
+968  Merge pull request #660 from owenc4a4/test
+
+catch error of socket
+969  Merge pull request #660 from owenc4a4/test
+
+catch error of socket
+970  [test] fix test case start_app
+971  catch error of socket
+972  Merge pull request #658 from owenc4a4/test
+
+[Test] fix bug of some test, add test case for #655
+973  Merge pull request #658 from owenc4a4/test
+
+[Test] fix bug of some test, add test case for #655
+974  Merge pull request #657 from owenc4a4/i655
+
+[win] fix that setAlwaysOnTop doesn't work when application isn't focuse...
+975  Merge pull request #657 from owenc4a4/i655
+
+[win] fix that setAlwaysOnTop doesn't work when application isn't focuse...
+976  [test] test case for #655
+977  [win] fix that setAlwaysOnTop doesn't work when application isn't focused
+
+  fix #655
+978  update README.md
+979  [README] update for 0.5.0
+980  [test] fix manual test case
+981  bump version to 0.5.0
+982  [test]fix test case file dialog
+983  Merge pull request #650 from owenc4a4/test
+
+[Test] classify test case and test case for file dialog
+984  Merge pull request #650 from owenc4a4/test
+
+[Test] classify test case and test case for file dialog
+985  [test] Add test case for file dialog
+986  [test] classify test case for automatic_tests and manual_tests
+987  modify native mode test build moudle
+988  [test]modify html5 test case
+989  [README] Update for 0.5.0 RC2
+990  Merge pull request #628 from owenc4a4/test
+
+[test] test case for strat app
+991  Merge pull request #628 from owenc4a4/test
+
+[test] test case for strat app
+992  bump mac version to 0.5.0
+993  [test] test case for strat app
+
+  relate to #627
+994  Read package.json correctly when it starts with '..'
+
+Fix #627
+995  add suport for 'nwdisable' and fix security origin
+
+Fix #534
+996  Merge pull request #614 from owenc4a4/test
+
+[Test] fix some text error.
+997  Merge pull request #614 from owenc4a4/test
+
+[Test] fix some text error.
+998  [test]fix the descripition
+999  Update README for 0.5.0 rc
+1000  [tool] update package_binrary
+1001  [test]fix a text error
+1002  [test]update `nw_test_app` module
+1003  bump version to 0.5.0-rc
+1004  Use master process for new default windows
+
+There are cases that the new window rvh is created
+in the devtools process.
+
+Fix #602
+1005  update upstream version with 27.0.1430.0
+1006  move PrintJobManager to ShellBrowserMainParts
+
+This will prevent the error msg on exit
+1007  support override initial path of file dialog
+
+Fix #516
+1008  Fix build error caused by missing |switches::kPrintRaster|.
+1009  Correctly handling Cmd-backtick
+
+Fix #432
+1010  Only apply clickthrough bounds when resizable
+Fixes rogerwang/node-webkit#594
+Improves rogerwang/node-webkit#588 (still broken on resizable windows)
+1011  rebase fix for Mac
+1012  Merge pull request #587 from zhchbin/nw-rebase
+
+[WIN] Fix build error of rebase.
+1013  Merge pull request #587 from zhchbin/nw-rebase
+
+[WIN] Fix build error of rebase.
+1014  Printing support
+1015  [WIN] Fix build error of rebase.
+
+1. Disable the warning of 4800. The warning is caused by forcing value to
+   bool(performance warning).
+2. gfx::NativeMenu is removed, use HMENU directly.
+3. NativeMenuWin::Rebuild add one parameter: InsertionDelegate*, it can be NULL
+   in our code path.
+4. Upstream code move |base/file_path.h| to |base/files/file_path.h|,
+   move |chrome/common/extensions/draggable_region.h| to |extensions/common/draggable_region.h|
+5. |WebContents::GetNativeView| is removed. Using ->GetView()->GetNativeView();
+6. |JavaScriptDialogCreator| is renamed to |JavaScriptDialogManager|
+7. Several method in the base class |content::MediaObserver| of |MediaInternals|
+   is removed, it's OK for us to remove it because we do nothing before.
+8. Base class: |content::ContentClient| add method |GetDataResourceBytes|, so
+   |content::ShellContentClient| should also override it.
+1016  rebase to dev27
+1017  [API][WIN] "position": "mouse" support on Windows. Fix #528.
+1018  [API][WIN] "position": "mouse" support on Windows. Fix #528.
+1019  Merge pull request #493 from zhchbin/master
+
+window.open should show the window by default.
+1020  Merge pull request #493 from zhchbin/master
+
+window.open should show the window by default.
+1021  Revert "[win]frameless window'height can be sized under 38px"
+
+This reverts commit d72f437f0d79ddbafb4c8f84e38fbc28cfe2b99c.
+1022  window.open should show the window by default even though the show option from package.json. Fix #491.
+1023  Merge pull request #478 from owenc4a4/frame
+
+[win]frameless window'height can be sized under 38px
+1024  Merge pull request #478 from owenc4a4/frame
+
+[win]frameless window'height can be sized under 38px
+1025  [win]frameless window'height can be sized under 38px
+
+relate to #419
+1026  Merge pull request #475 from owenc4a4/tools
+
+fix build native node cause error on cygwin
+1027  Merge pull request #475 from owenc4a4/tools
+
+fix build native node cause error on cygwin
+1028  Merge pull request #474 from owenc4a4/test
+
+Test case for `new-instance`, `loaded event` and fix some problem in test case
+1029  Merge pull request #474 from owenc4a4/test
+
+Test case for `new-instance`, `loaded event` and fix some problem in test case
+1030  [test] test case for `new-instance` in window
+1031  [test] test case for loaded event
+
+#469
+1032  [test] fix some problem of test case.
+1033  [test] test case for #391
+1034  Merge pull request #472 from RobertLowe/master
+
+[Fix] Malformed query when using `--remote-debugging-port` flag
+1035  Merge pull request #472 from RobertLowe/master
+
+[Fix] Malformed query when using `--remote-debugging-port` flag
+1036  should use the correct SiteInstance for new window
+
+Fix #469
+1037  adding more DVLOGs
+1038  Fix 'Malformed json'
+1039  adding logging for our IPC messages
+1040  [tool] make script runnable on linux
+1041  [tool] fix build native node cause error on cygwin
+1042  Merge pull request #467 from owenc4a4/test
+
+[test] test case for snapshot
+1043  Merge pull request #467 from owenc4a4/test
+
+[test] test case for snapshot
+1044  [test] test case for snapshot
+1045  Merge pull request #464 from owenc4a4/test
+
+[test] test case for screen shot
+1046  Merge pull request #464 from owenc4a4/test
+
+[test] test case for screen shot
+1047  Merge pull request #463 from owenc4a4/tool
+
+add `nwsnapshot` to package tool
+1048  Merge pull request #463 from owenc4a4/tool
+
+add `nwsnapshot` to package tool
+1049  [test] test case for screen shot
+1050  add `nwsnapshot` to package tool
+1051  Overriding method should have "virtual"
+
+Fix warnings on OSX
+1052  Merge pull request #454 from owenc4a4/test
+
+[test] add test case for #408
+1053  Merge pull request #454 from owenc4a4/test
+
+[test] add test case for #408
+1054  bump version to 0.4.3-pre
+1055  [README] update for 0.4.2
+1056  [test] add test case for #408
+1057  [test]add option 'no_connect' in /nw_app_test
+1058  bump version to 0.4.2
+1059  fix traling whitespace and empty impl on Linux/Win
+
+Fix previous commit
+1060  Added self to AUTHORS
+1061  Adding support for alternate icon in Mac
+1062  fix NOTREACHED case to launch devtools with debug version
+1063  Merge pull request #445 from zhchbin/master
+
+Remove the check of the name/id about the input element.
+1064  Merge pull request #445 from zhchbin/master
+
+Remove the check of the name/id about the input element.
+1065  Remove the check of the name/id about the input element. Fix #434.
+1066  Remove the check of the name/id about the input element. Fix #434.
+1067  move kmNodejs switch to content
+1068  use 'child-clean-exit' on POSIX systems only
+1069  make "child-clean-exit" the default option
+
+Fix #408. The destructor of NW Shell will try to shutdown and kill
+the renderer immediately:
+
+content::RenderProcessHostImpl::Cleanup (this=0xf683b40) at ../../content/browser/renderer_host/render_process_host_impl.cc:1159
+0x0a16e614 in content::RenderProcessHostImpl::Release (this=0xf683b40, routing_id=1)
+at ../../content/browser/renderer_host/render_process_host_impl.cc:1140
+0x0a194d93 in content::RenderWidgetHostImpl::~RenderWidgetHostImpl (this=0xf6a2884, __vtt_parm=0xf4a5dfc, __in_chrg=<optimized out>)
+at ../../content/browser/renderer_host/render_widget_host_impl.cc:203
+0x0a17ac9c in content::RenderViewHostImpl::~RenderViewHostImpl (this=0xf6a2880, __in_chrg=<optimized out>, __vtt_parm=<optimized out>)
+at ../../content/browser/renderer_host/render_view_host_impl.cc:199
+0x0a17ad21 in content::RenderViewHostImpl::~RenderViewHostImpl (this=0xf6a2880, __in_chrg=<optimized out>, __vtt_parm=<optimized out>)
+at ../../content/browser/renderer_host/render_view_host_impl.cc:215
+0x0a19ac9f in content::RenderWidgetHostImpl::Destroy (this=0xf6a2884)
+at ../../content/browser/renderer_host/render_widget_host_impl.cc:1375
+0x0a1957bd in content::RenderWidgetHostImpl::Shutdown (this=0xf6a2884)
+at ../../content/browser/renderer_host/render_widget_host_impl.cc:311
+0x0a18045a in content::RenderViewHostImpl::Shutdown (this=0xf6a2880) at ../../content/browser/renderer_host/render_view_host_impl.cc:1083
+0x0a39cde9 in content::RenderViewHostManager::~RenderViewHostManager (this=0xf6a1bd8, __in_chrg=<optimized out>)
+at ../../content/browser/web_contents/render_view_host_manager.cc:54
+0x0a1d8ab2 in content::WebContentsImpl::~WebContentsImpl (this=0xf6a1a80, __in_chrg=<optimized out>)
+at ../../content/browser/web_contents/web_contents_impl.cc:328
+0x0a1d8bbb in content::WebContentsImpl::~WebContentsImpl (this=0xf6a1a80, __in_chrg=<optimized out>)
+at ../../content/browser/web_contents/web_contents_impl.cc:378
+0x08542f36 in base::DefaultDeleter<content::WebContents>::operator() (this=0xf813a50, ptr=0xf6a1a80) at ../../base/memory/scoped_ptr.h:138
+0x085426c3 in base::internal::scoped_ptr_impl<content::WebContents, base::DefaultDeleter<content::WebContents> >::~scoped_ptr_impl (this=
+0xf813a50, __in_chrg=<optimized out>) at ../../base/memory/scoped_ptr.h:221
+0x085424dd in scoped_ptr<content::WebContents, base::DefaultDeleter<content::WebContents> >::~scoped_ptr (this=0xf813a50,
+__in_chrg=<optimized out>) at ../../base/memory/scoped_ptr.h:305
+0x08540537 in content::Shell::~Shell (this=0xf813a20, __in_chrg=<optimized out>) at ../../content/nw/src/nw_shell.cc:126
+0x085405c7 in content::Shell::~Shell (this=0xf813a20, __in_chrg=<optimized out>) at ../../content/nw/src/nw_shell.cc:142
+1070  support source protection with snapshot
+
+Fix #269
+1071  Merge pull request #436 from zhchbin/issue81
+
+[API] Support api in the window to capture the visible page.
+1072  Merge pull request #436 from zhchbin/issue81
+
+[API] Support api in the window to capture the visible page.
+1073  Fix linux build error.
+1074  [API] API for capturing the visible page of window. Fix #81.
+1075  [API] API for capturing the visible page of window. Fix #81.
+1076  Make 'nodejs' flag work with gui.Window.open()
+1077  Create new shell with new SiteInstance
+
+fix regression: new-instance
+1078  set Node frame property
+1079  Merge pull request #410 from owenc4a4/test
+
+[Test] test case for webgl, set timeout can not run when test passed
+1080  Merge pull request #410 from owenc4a4/test
+
+[Test] test case for webgl, set timeout can not run when test passed
+1081  [test]set timeout can not run when test passed
+1082  [test]add some website for test
+1083  [test]add webgl test case
+1084  Merge pull request #407 from zhchbin/master
+
+[WIN] Update status of menuitems in the menu bar.
+1085  Merge pull request #407 from zhchbin/master
+
+[WIN] Update status of menuitems in the menu bar.
+1086  bump version to v0.4.2-pre
+1087  [README] update for 0.4.1
+1088  [WIN] Update status of menuitems in the menu bar. Fix #391.
+1089  [WIN] Update status of menuitems in the menu bar. Fix #391.
+1090  bump version to 0.4.1
+1091  Merge pull request #406 from zhchbin/issue403
+
+Implement HandleExternalProtocol of the ShellResourceDispatcherHostDelegate
+1092  Merge pull request #406 from zhchbin/issue403
+
+Implement HandleExternalProtocol of the ShellResourceDispatcherHostDelegate
+1093  Implement HandleExternalProtocol of the ShellResourceDispatcherHostDelegate without without security check. Fix #403.
+1094  Merge pull request #405 from zhchbin/master
+
+[API] Distinguish 'js-flags' from 'chromium-args' for more natural feel
+1095  Merge pull request #405 from zhchbin/master
+
+[API] Distinguish 'js-flags' from 'chromium-args' for more natural feel
+1096  [API] Distinguish 'js-flags' from 'chromium-args' for more natural feel. Fix #298.
+1097  [Mac] add implementation for shell_download_manager_delegate
+
+Fix #373
+1098  separate platform implementations for shell_download_manager_delegate
+1099  Merge pull request #401 from owenc4a4/test
+
+test case for plugin #399
+1100  Merge pull request #401 from owenc4a4/test
+
+test case for plugin #399
+1101  test case for plugin #399
+1102  [README] reformat h1 to h2; highlight demo & apps
+1103  Deal with parameters with renderers only
+
+Fix #399
+1104  always redirect global.console to webkit
+
+There are cases that the new Frame doesn't have Node enabled on
+navigation, and then the 'console' set previously won't work since
+the rv has been swapped out. Fix #350
+1105  add parameter for WebFrame on context creation
+
+we want to operate on main frame in the future
+1106  Merge pull request #393 from zhchbin/master
+
+Remove the url string from alert, confirm and prompt dialog. Fix #392.
+1107  Merge pull request #393 from zhchbin/master
+
+Remove the url string from alert, confirm and prompt dialog. Fix #392.
+1108  Remove the url string form alert, confirm and prompt dialog. Fix #392.
+1109  Remove the url string form alert, confirm and prompt dialog. Fix #392.
+1110  Revert "added mac specific file chooser dialog code within ShellDownloadManagerDelegate::ChooseDownloadPath"
+
+This reverts commit 5c2eb1fa8b4783d55452e143de5b2ceec8543ce7.
+1111  Merge pull request #387 from sonicsnes/master
+
+Remove window draw radius and fix framed mouse capture area on windows
+1112  Merge pull request #387 from sonicsnes/master
+
+Remove window draw radius and fix framed mouse capture area on windows
+1113  Add self to AUTHORS
+1114  Merge pull request #384 from MaestroElearning/mac-file-dialog
+
+added mac specific file chooser dialog code
+1115  Merge pull request #384 from MaestroElearning/mac-file-dialog
+
+added mac specific file chooser dialog code
+1116  Remove window draw radius and fix framed mouse capture area on windows
+
+1px draw radius is unnecessary for nw and causes a 1px artifact at the corner of all windows
+Fixes rogerwang/node-webkit#331
+
+We create a mouse dead zone on frameless windows, because the drag handles are only available within the window border -- not outside (as the case is for framed windows). The if block was incorrectly only covering the dead zone on one side of the window -- not all four.
+Fixes rogerwang/node-webkit#321
+1117  added mac specific file chooser dialog code within ShellDownloadManagerDelegate::ChooseDownloadPath
+1118  Merge pull request #376 from owenc4a4/test
+
+Test case for #371, a module for add app to test case
+1119  Merge pull request #376 from owenc4a4/test
+
+Test case for #371, a module for add app to test case
+1120  Merge pull request #378 from zhchbin/master
+
+[WIN]Use new version resource file for web cursor.
+1121  Merge pull request #378 from zhchbin/master
+
+[WIN]Use new version resource file for web cursor.
+1122  [WIN] Use new version resource file for web cursor.
+1123  [test]call require with node-main set
+1124  [test]modules for add app to test
+1125  implement Window.zoom and event handler
+
+Fix #372
+1126  handle our events after rvh is swapped out
+1127  don't override mainModule when start from node-main
+
+related to #371
+1128  Merge pull request #365 from owenc4a4/test
+
+[test] different method of starting app
+1129  Merge pull request #365 from owenc4a4/test
+
+[test] different method of starting app
+1130  [test] different method of starting app
+1131  Merge pull request #370 from owenc4a4/native
+
+[test]native modules do not prebuild
+1132  Merge pull request #370 from owenc4a4/native
+
+[test]native modules do not prebuild
+1133  tests/README.md how to build native modules
+1134  remove the binary hack introduced in 3160fecfc84
+1135  bump version to 0.4.1-pre
+1136  Merge pull request #369 from zhchbin/master
+
+Prevent the "NativeMenuWin" from being a owner-draw control. Fix #349
+1137  Merge pull request #369 from zhchbin/master
+
+Prevent the "NativeMenuWin" from being a owner-draw control. Fix #349
+1138  [test]native modules do not prebuild
+1139  [API][WIN] Force the "NativeMenuWin" do not being a owner-draw control, and set the icon by nw self. Fix #349.
+1140  [API] Fix setter of menuitem "submenu" does't work.
+1141  [README] update for 0.4.0
+1142  bump version to 0.4.0
+1143  support document.cookie for file protocol
+1144  Mac version requirement
+1145  Fix compilation error on 'elif'
+1146  Merge pull request #353 from owenc4a4/test
+
+Test case for #327, a module call app test, revise node-remote
+1147  Merge pull request #353 from owenc4a4/test
+
+Test case for #327, a module call app test, revise node-remote
+1148  [test] test case for #327
+
+[issue#327]https://github.com/rogerwang/node-webkit/issues/327
+1149  [test]modify node-remote case for call port 8080
+1150  Merge pull request #347 from owenc4a4/test
+
+[test]modify test case 'node-remote'
+1151  Merge pull request #347 from owenc4a4/test
+
+[test]modify test case 'node-remote'
+1152  Merge pull request #352 from zhchbin/master
+
+[WIN] Fix compile error because CommandLine::StringType will be std::wstring. #298
+1153  Merge pull request #352 from zhchbin/master
+
+[WIN] Fix compile error because CommandLine::StringType will be std::wstring. #298
+1154  [WIN] Fix compile error because CommandLine::StringType will be std::wstring. Do some conversion between them. #298.
+1155  Handle 'key=value' case for 'chromium-args'; Fix #298
+1156  gitignore pydevproject
+1157  Update tests/README.md
+1158  [test]modify test case 'node-remote'
+1159  Strip PSN from command line for Finder
+
+Fix #310
+1160  Update chromium version string
+1161  Don't touch GPU process' command line
+1162  [gtk] realize window on creation
+
+Fix #339
+1163  Merge pull request #342 from zhchbin/master
+
+[WIN]Fix Compilation error caused by upstream change the constant names of the ButtonState enum.
+1164  Merge pull request #342 from zhchbin/master
+
+[WIN]Fix Compilation error caused by upstream change the constant names of the ButtonState enum.
+1165  [WIN] Fix compile error caused by upstream change the constant names of the ButtonState enum.
+1166  new option 'new-instance' in gui.Window.open()
+
+Setting the option to 'true' starts a new renderer process
+and Node instance. Fix #306
+1167  bump version to 0.4.0-pre
+1168  Disable Node binding in Devtools' DOM
+
+We don't want to execute node-main again. Fix #327
+1169  Merge pull request #326 from owenc4a4/test
+
+Test case for user-agent and node-remote
+1170  Merge pull request #326 from owenc4a4/test
+
+Test case for user-agent and node-remote
+1171  Merge branch 'rebase'
+
+Conflicts:
+	src/nw_package.cc
+1172  use v8 proxy resolver
+
+Fix #318
+1173  [rebase] fix devtools
+1174  rebase fix
+1175  [Mac] Update to newest Chromium upstream.
+1176  Update to newest Chromium upstream.
+
+Conflicts:
+	src/nw_package.cc
+1177  [rebase] fix devtools
+1178  use v8 proxy resolver
+
+Fix #318
+1179  rebase fix
+1180  add test node-remote to auto test
+1181  test for node-remote
+1182  mark test case reload app 'long-to-run'
+1183  test case for user agent
+1184  ignore cache file and
+1185  previous rebase work from Cheng
+1186  update to latest chromium
+1187  Merge pull request #317 from zhchbin/master
+
+Simple test case for "chromium-args".
+1188  Merge pull request #317 from zhchbin/master
+
+Simple test case for "chromium-args".
+1189  [test] Simple test case for "chromium-args".
+Note: I disable JavaScript I18N API through this API in package.json for test.
+1190  Merge pull request #309 from zhchbin/master
+
+Add 'chromium-args'
+1191  Merge pull request #309 from zhchbin/master
+
+Add 'chromium-args'
+1192  Merge pull request #311 from owenc4a4/test_case
+
+[test]reload app, cross window call, automatic app test
+1193  Merge pull request #311 from owenc4a4/test_case
+
+[test]reload app, cross window call, automatic app test
+1194  Merge pull request #312 from owenc4a4/new_work
+
+enable calling reloadDev from code.
+1195  Merge pull request #312 from owenc4a4/new_work
+
+enable calling reloadDev from code.
+1196  bump version to 0.3.8-pre
+1197  [README] update for 0.3.7
+1198  enable calling reloadDev from code.
+1199  [test]reload app, cross window call, automatic app test
+1200  install Node for window.open() Windows
+
+In previous v8 code, in the middle of loading, KURL returns about:blank
+for invalid URL. So we simulate the same behaviour here.
+
+Fix #303
+1201  rename "access-node-remote" to "node-remote"
+1202  Add 'chromium-args', which can be used to specify chromium
+command line args in package.json, fix #307.
+1203  bump version to 0.3.7
+1204  Merge pull request #291 from owenc4a4/pack
+
+package binrary for all
+1205  Merge pull request #291 from owenc4a4/pack
+
+package binrary for all
+1206  provide webkit version and OS info for user agent
+1207  Force starting devtools window in new renderer process
+1208  rename pending_devreload to pinning_renderer
+1209  Disable pinning process for dev reload
+
+Fix #294. And previous process pinning commit a6493b3 breaks dev reload
+1210  [API] Fix "unknown method" error of Shell
+1211  Quit browser with the exit code where renderer quits
+
+Fix #283
+1212  keep only one renderer running; Fix #290
+1213  package binrary for all
+1214  Merge pull request #287 from zhchbin/master
+
+[API][WIN] Fix maximize event doesn't trigger when double click the title bar. Fix #257
+1215  Merge pull request #287 from zhchbin/master
+
+[API][WIN] Fix maximize event doesn't trigger when double click the title bar. Fix #257
+1216  [API][WIN] Exclude 4 lower order bits  when comparing beacuse
+Windows uses these for type-specific information. Fix #257.
+1217  Merge pull request #278 from zhchbin/master
+
+Drop the #if on Windows
+1218  Merge pull request #278 from zhchbin/master
+
+Drop the #if on Windows
+1219  Drop the #if because on WIN ShellLoginDialog have implement.
+1220  fix broken shell_resource_dispatcher_host_delegate.cc in 035e8600
+1221  support remote pages accessing Node under rules
+
+Fix #187
+1222  Merge pull request #277 from zhchbin/issue272
+
+[WIN] Implement ShellLoginDialog on Windows, for authorization required....
+1223  Merge pull request #277 from zhchbin/issue272
+
+[WIN] Implement ShellLoginDialog on Windows, for authorization required....
+1224  [WIN] Implement ShellLoginDialog on Windows, for authorization required. Fix #272.
+1225  use frame->document().url() rather than v8 to get location
+1226  Merge pull request #268 from Mithgol/patch-1
+
+date added beside the version of the last prebuilt binaries
+1227  Merge pull request #268 from Mithgol/patch-1
+
+date added beside the version of the last prebuilt binaries
+1228  Merge pull request #267 from zhchbin/master
+
+Allow file:// URIs can read other file:// URIs by default.
+1229  Merge pull request #267 from zhchbin/master
+
+Allow file:// URIs can read other file:// URIs by default.
+1230  date added beside the version of the last prebuilt binaries
+1231  Allow file:// URIs can read other file:// URIs by default.   Fix #266.
+1232  Allow file:// URIs can read other file:// URIs by default.   Fix #266.
+1233  Use correct Chrome version
+
+We are actually between 25.0.1337.0 and 25.0.1349.2
+1234  Override User-Agent from package.json
+
+Fix #263
+1235  bump version to 0.3.7-pre
+1236  [README] update for v0.3.6
+1237  Merge pull request #259 from owenc4a4/master
+
+[Test] Add test case for MenuItem.
+1238  Merge pull request #259 from owenc4a4/master
+
+[Test] Add test case for MenuItem.
+1239  [test]add test case for menuItem
+1240  Relaunch 96112f4 with fix for Mac.
+1241  Relaunch 96112f4 with fix for Mac.
+1242  Revert 96112f4033b2f66f08ac1ba22131d52a968e1949 and dd9977e279e280d5649227b16e3839286a64bad7.
+1243  Revert 96112f4033b2f66f08ac1ba22131d52a968e1949 and dd9977e279e280d5649227b16e3839286a64bad7.
+1244  Revert 96112f4033b2f66f08ac1ba22131d52a968e1949 and dd9977e279e280d5649227b16e3839286a64bad7.
+1245  Fix the search path of finding package.
+
+Search path:
+1. The exe itself.
+2. (not on Mac) The directory where exe resides in.
+3. The arguments.
+1246  Dump v0.3.6.
+1247  [API] Make min/max_width/height work when not set both. Fix #246.
+1248  [API] Make min/max_width/height work when not set both. Fix #246.
+1249  find app in the same directory as exe when no arguments are given
+
+Fix #243
+1250  [API] Add 'maximize' and 'unmaximize' event for Window, fix #201.
+1251  [API] Add 'maximize' and 'unmaximize' event for Window, fix #201.
+1252  [Mac] Get locale info on startup, otherwise GetApplicationLocale won't work.
+1253  [Test] Previous test should not affect next test after refreshing.
+1254  Rename GetObject to GetApiObject.
+
+On Windows, wingdi.h contains a "#define GetObject GetObjectW", which
+causes problems for our code if any headers include wingdi.h, so rename
+this function to avoid such conficts.
+1255  Merge pull request #245 from zhchbin/issue154
+
+[GTK] Fix #154.
+1256  Merge pull request #245 from zhchbin/issue154
+
+[GTK] Fix #154.
+1257  [GTK] Fix code style
+1258  Merge pull request #247 from owenc4a4/master
+
+[Test] test case for Menu API.
+1259  Merge pull request #247 from owenc4a4/master
+
+[Test] test case for Menu API.
+1260  [GTK]Fix code style
+1261  [Test] Add "long-to-run" mark for tests that needs too long to run.
+1262  [Test] test case for menu
+1263  [API] Window.moveTo and Window.resizeTo should convert arguments to number.
+1264  [GTK] Remove previous wrong code, and fix #154.
+1265  [GTK] Remove previous wrong code, and fix #154.
+1266  [Win] Add dev reload button in toolbar.
+1267  [Test] Clean already merged tests.
+1268  [Test] Merge uncaughtException related tests into our tests suit.
+1269  [Test] Fix typo, json_file to json.
+1270  [Test] Support outputing to file.
+1271  [Test] Add command line support for tests.
+1272  Merge pull request #244 from zhchbin/issue154
+
+[GTK] Fix context menu icon bug. Part #154
+1273  Merge pull request #244 from zhchbin/issue154
+
+[GTK] Fix context menu icon bug. Part #154
+1274  [GTK] Fix context menu icon bug. Part #154
+1275  [API] Use the CommandLine.original_argv to get arguments.
+
+In this way, the precedence of original arguments won't get messed, and
+we don't need to filter the switches we added programmely in nw.
+
+Relies on zcbenz/chromium@1428b0a.
+1276  [API] Use regex to filter more arguments used by node-webkit.
+1277  [Test] message_channel_test should run in node context.
+1278  [API] Add App.fullArgv and don't filter switches in App.argv. Fix #215.
+1279  [API] Add App.fullArgv and don't filter switches in App.argv. Fix #215.
+1280  [GTK] Fix compilation error caused by previous commit.
+1281  [Mac] Add RefreshDev button in toolbar.
+1282  [Test] Merge htmltest into new mocha test framework.
+1283  [Test] Run tests in window context.
+1284  dev reload feature. UI for this on Linux
+
+dev reloading is a feature to let the app developers restart the
+render process manually. In this way the updated code can be reloaded from
+disk, including both the Node and the Webkit context.
+
+Partly fix #218
+1285  [Test] Add test case for #241.
+1286  [Test] Add test case for #241.
+1287  [Test] Reimplement node tests by using mocha.
+1288  [Test] Add package.json in tests/ to use npm to install all dependencies needed for tests.
+1289  fix: crash on debugger
+
+In debugger's context properties on node's global object cannot be read
+1290  add support for cookies
+
+Fix #238; cookie db is in the profile directory.
+e.g. ~/.config/<name>/cookies
+1291  revert to 2610698d
+1292  Move Shell from namespace content to namespace nw.
+1293  [Mac] Update to newest Chromium upstream.
+1294  Update to newest Chromium upstream.
+1295  We are now at v0.3.6-pre.
+1296  Do not print stacktrace if user is listening to uncaughtException.
+1297  [Test] Add test cases for uncaughtException listeners.
+1298  [README] 0.3.5
+1299  node-webkit v0.3.5 is released.
+1300  [Win] Fix compilation error of 99b222865e.
+1301  [Win] Fix compilation error of 99b222865e.
+1302  Fix compilation error of 99b222865e.
+1303  Fix compilation error of 99b222865e.
+1304  [API] Implement size/position functions accurately instead of relying on DOM.
+1305  Add getters and setters for size and position in NativeWindow.
+1306  Support Pointer Lock API. Fix #67.
+1307  Support Pointer Lock API. Fix #67.
+1308  [Test] Test other fields of 'require', for #225.
+1309  [Test] Test other fields of 'require', for #225.
+1310  [Test] Add reload button, be able to test #190.
+1311  [Test] Add reload button, be able to test #190.
+1312  [API] Remove zombie callbacks for Window before emitting events.
+
+Zombie callbacks may appear when you installed callbacks in one window but
+then refreshed the window or closed the window, the callbacks were still
+stored but their closures were gone.
+1313  [API] Add Window.reload function.
+1314  [API] Add loading and loaded event for Window.
+1315  Disable exposing GC to tests for Sunspider performance
+
+Fix #210
+1316  [README] more on the features
+1317  Add document shortcut to front page
+1318  [API] Send event before we erase the object.
+1319  [Test] Catch 'closed' event and use Window.open API to open popup window.
+1320  [API] Make sure one app only has one render process.
+
+This is necessary for #125, #190 and #202.
+1321  [API] Make Window.open accept relative paths. See #202 and #125.
+1322  [API] Make Window.open accept relative paths. See #202 and #125.
+1323  [API] Make Window.open accept relative paths. See #202 and #125.
+1324  [API] Add gui.Window.open, see #125 and #202.
+1325  [API] Add gui.Window.open, see #125 and #202.
+1326  [API] Add gui.Window.open, see #125 and #202.
+1327  Highlight documents; formatting
+1328  Merge branch 'master' of https://github.com/rogerwang/node-webkit
+1329  Set default window icon and set icon for nw.exe. Fix #221.
+1330  Set default window icon and set icon for nw.exe. Fix #221.
+1331  Devtools should have the access to all local files
+
+Fix #95
+1332  Use new icon in Mac, and thanks to Jeroen Ransijn for contributing it!
+1333  [API] Make isFullscreen and isKioskMode settable.
+1334  Fix typo.
+1335  Merge pull request #207 from zhchbin/property
+
+[API] Add properties for Window API: isFullscreen, isKioskMode and methods: toggleKioskMode(), toggleFullscreen()
+1336  Merge pull request #207 from zhchbin/property
+
+[API] Add properties for Window API: isFullscreen, isKioskMode and methods: toggleKioskMode(), toggleFullscreen()
+1337  Move the setDestructor to v8_util module (1). Part of rogerwang/node-webkit#202.
+1338  Move some util functions to node built-in module (1). See #202.
+1339  Move some util functions to node built-in module (1). See #202.
+1340  [Mac]Initialize is_kiosk_ in constructor
+1341  [API] Add properties: isFullscreen, isKioskMode and methods: toggleKioskMode()
+        and toggleFullscreen() to Window
+1342  Merge branch 'master' into property
+
+Conflicts:
+	src/api/window/window.js
+1343  Add missing files for last commit, part of #202.
+1344  Add missing files for last commit, part of #202.
+1345  [MAC] Little fix for windows api implement
+1346  [API] Implement Window.toggleKioskMode() and  Window.toggleFullscreen().
+Also add properties isFullscreen and isKioskMode for Window. Fix #125
+1347  Merge branch 'master' of github.com:rogerwang/node-webkit
+1348  Initial work to move Window from DOM to node (1). See #202.
+1349  Initial work to move Window from DOM to node (1). See #202.
+1350  README: More on the founding nature
+1351  Fix memory leak created by adding listener repeatly on 'process'
+
+The 'uncaughtException' listener on process should not be added each time when
+a document is created, or it will leave the reference to the closure created by
+the call back and leak memory (Fix #203)
+1352  Move GetNextObjectId to IDWeakMap (2). Part of rogerwang/node-webkit#202.
+1353  Store objects registry in node context (2). Part of rogerwang/node-webkit#202.
+1354  Move IDWeakMap from DOM to node (2) . Part of rogerwang/node-webkit#202.
+1355  Move IDWeakMap from DOM to node (2) . Part of rogerwang/node-webkit#202.
+1356  Add missing files for 98a75fd39c3cd9cb35a36a50474c920e65c25f67.
+1357  Add missing files for 98a75fd39c3cd9cb35a36a50474c920e65c25f67.
+1358  Better description on the founding nature
+1359  Show error page when node throws 'uncaughtException'. Close #198.
+1360  Show error page when node throws 'uncaughtException'. Close #198.
+1361  bump version string for 0.3.5-pre
+1362  update links for 0.3.4
+1363  Merge branch 'master' of https://github.com/rogerwang/node-webkit
+1364  [Test] Fix wrong prebuilt native module for ia32.
+1365  [Test] Test case for #196.
+1366  [Test] Test case for #196.
+1367  [Test] Print in node modules, test case for #184.
+1368  [Test] Print in node modules, test case for #184.
+1369  Revert "No need to catch uncaught exception in js"
+
+This reverts commit 43065c28a30d570feb8878cb7a8ecab1db436d65.
+Fix #196
+1370  node-webkit v0.3.4 is released
+1371  Revert previous commit.
+1372  Merge branch 'master' of https://github.com/rogerwang/node-webkit
+1373  Print GPU debug information.
+1374  [win] use POSIX name for MAX_PATH
+1375  Merge pull request #189 from zhchbin/552593d51e1c16ba622c842946906ff051042550
+
+Fix the Scroll cursor disappears bug. Fix #68
+1376  Merge pull request #189 from zhchbin/552593d51e1c16ba622c842946906ff051042550
+
+Fix the Scroll cursor disappears bug. Fix #68
+1377  Add resource file in the nw.gypi file. Fix #68.
+1378  Add resource file in the nw.gypi file. Fix #68.
+1379  Get correct path of current executable, and read symbol link when extracting packages. Fix #186.
+1380  [Test] setMaximize/setMinimize's test should have diffrent width/height.
+1381  [Win] Should disable maximize button when not resizable.
+1382  Revert temporary fix for #178.
+1383  Revert temporary fix for #178.
+1384  [Test] Check for score on html5test.com (contains check for #178).
+1385  [Test] Check for score on html5test.com (contains check for #178).
+1386  Use prebuilt ffmpegsumo.so on Mac, temporary fix for #178.
+1387  Use prebuilt ffmpegsumo.so on Mac, temporary fix for #178.
+1388  Make sure `window_` is non-NULL when initialize the Shell. Fix #179.
+1389  Make sure `window_` is non-NULL when initialize the Shell. Fix #179.
+1390  [Test] Add test case for #179.
+1391  [Test] Add test case for #179.
+1392  [Mac] Prevent exiting kiosk mode when not in. Fix #168.
+1393  [Mac] Prevent exiting kiosk mode when not in. Fix #168.
+1394  Don't need to specify routing id when sending synchrounouse message to browser. This is part of fixes for #150.
+1395  [Mac] Update frameless window implementation to upstream.
+1396  Make devtools a little wider to show all items in its new style.
+1397  Emit exit event in OnRenderProcessWillShutdown.
+1398  "exit" should be emited for process on exit. Fix #140.
+1399  "exit" should be emited for process on exit. Fix #140.
+1400  [Test] Add test for #140: "exit" should be emited for process on exit.
+1401  [Test] Add test for #140: "exit" should be emited for process on exit.
+1402  [GTK] GTK+ didn't consider window frame size when resizing :(, this commit fixed it and could close #122.
+1403  [Test] Add moveTo and resizeTo tests in window test.
+1404  Update Chromium code to upstream.
+1405  [API] Implement Window.setAlwaysOnTop. Fix #138.
+1406  [API] Implement Window.setAlwaysOnTop. Fix #138.
+1407  Update README for v0.3.3.
+1408  node-webkit v0.3.3 is released.
+
+Core
+* Add automatic tests.
+* Make libuv loop pause in nested message loop (like a call to "alert()").
+* Add 'plugins' dir in app to plugin search path.
+* Fix crashes caused by creating V8 handles without handle scope.
+* Expose window object to Node's context.
+* The 'node-main' script should executes before window context is created.
+
+Devtools
+* Force closing previous debug session.
+
+Mac
+* Improve message loop's performance and stability.
+* Fix crash when dragging images.
+
+Windows
+* Fix crash on Windows XP.
+1409  [Test] Disable test of bignum module on win32 since this module has a bug for building on Windows, find a replacement module for testing OpenSSL in future :(
+1410  Merge branch 'master' of https://github.com/rogerwang/node-webkit
+1411  Expose window object to Node's context
+1412   [Test] Add linux precompiled binary modules for last test.
+1413  Merge branch 'master' of https://github.com/rogerwang/node-webkit
+1414  [Test] Fix the child process test on Windows which uses \r\n as line ender
+1415  [Test] Add test for 'Message loop should run under a HandleScope'.
+
+See #156. This commit only has precompiled binary for Mac.
+1416  Force closing previous debug session
+1417  add 'plugins' dir in app to plugin search path
+
+Fix #85
+1418  [Test] Change timestamp to counter to make results more clear.
+1419  Merge branch 'master' of https://github.com/rogerwang/node-webkit
+1420  [Test] Add test: libuv loop should pause when alert() is running.
+1421  [Test] Add ia32 and x64 native module on linux for testing.
+1422  We're at v0.3.3-pre now.
+1423  Make node tests run again after showing an alert dialog.
+
+This change is for #82.
+1424  No need to catch uncaught exception in js anymore, we've already done it in node patch.
+1425  Add native module test (only have mac binary now).
+1426  Add some tests on node.js part.
+1427  Add override for GetNativeImageNamed. Fix #152.
+1428  Add override for GetNativeImageNamed. Fix #152.
+1429  Update README for v0.3.2.
+1430  node-webkit v0.3.2 is released.
+
+Node
+* Update to 0.8.14.
+
+Devtools
+* Fix crash under fullscreen mode.
+* Click on devtools button will reuse previous devtools window.
+
+API
+* Implement window menu API.
+* Add support for command line arguments.
+* Add support for file handling.
+* Add App.closeAllWindows() API.
+
+Core
+* Make patented codecs work when users have license and privode their
+  custom built libffmpeg.
+
+Mac
+* Better message loop integration, fix performance issues.
+* Use app's name in application menu items.
+* Send "close" event to windows when use Cmd+Q to quit.
+
+Windows
+* Force to use native window frame even when Aero effect is off.
+* Hide console window when creating console processes.
+1431  [GTK][Win] Enable single instance mode for standalone apps. Fix #61.
+1432  [GTK][Win] Enable single instance mode for standalone apps. Fix #61.
+1433  First try to extract nw itself then try to load from commandline.
+
+This is necessary to implement #61.
+1434  Make browser aware of other instances. Part of both #61 and #64.
+
+Relying on zcbenz/chromium@e39ee1a.
+1435  Make browser aware of other instances. Part of both #61 and #64.
+
+Relying on zcbenz/chromium@e39ee1a.
+1436  Make browser aware of other instances. Part of both #61 and #64.
+
+Relying on zcbenz/chromium@e39ee1a.
+1437  [Mac][API] Double click in Finder or use 'open' command to open files will send 'open' event to standalone apps.
+1438  [API] Add 'open' event for App.
+1439  Close devtools window instead of directly delete.
+1440  [Mac] The "Quit" menu item closes all windows instead of directly quit.
+
+Fix #141.
+1441  [API] Add App.closeAllWindows(). Part of #141.
+1442  [API] Add App.closeAllWindows(). Part of #141.
+1443  Close corresponding devtools window the window is closed.
+1444  [API] Add App.argv, make app aware of command line arguments.
+
+Part of fixes for #61.
+1445  Devtools button should reuse previous opened devtools window.
+
+Fix #109.
+1446  Merge branch 'master' of https://github.com/rogerwang/node-webkit
+1447  Always use native frame.  Fix #121.
+1448  Always use native frame.  Fix #121.
+1449  Merge branch 'master' of https://github.com/rogerwang/node-webkit
+1450  Remove the webkit patch.
+
+Now we have a Webkit repo to log the development:
+https://github.com/rogerwang/WebKit_trimmed
+1451  [Win] Make window response to menu commands.
+
+This commit relies on:
+zcbenz/chromium@fd7ef38
+zcbenz/chromium@f427ff9
+1452  [API][Win] Implement window menu.
+
+This commit relies on:
+zcbenz/chromium@7292311d43
+zcbenz/chromium@b9bc2fdaa9
+zcbenz/chromium@47be29f2d5
+1453  [API][GTK] Implement window menu.
+1454  [Mac] Dynamically build application menu instead of using xib. Fix #115.
+1455  [Mac] Dynamically build application menu instead of using xib. Fix #115.
+1456  [API][Mac] Implement window menu.
+1457  [API] App.Quit should be App.quit.
+1458  Update Chromium and WebKit code to upstream.
+1459  Disable devtools window's fullscreen mode. Fix #127.
+1460  Disable devtools window's fullscreen mode. Fix #127.
+1461  We're now at v0.3.2-pre.
+1462  node-webkit v0.3.1 is released.
+
+Changelog:
+
+Core
+* Show error page when package is incorrect.
+* Support kiosk mode.
+* Enable experimental WebKit features by default.
+* Enable executing a node script on startup by specifying 'node-main' in package.json.
+* Add App API.
+* Implement support for datalist tag.
+
+Mac
+* Fix support for node.js native modules.
+* Fix the version string.
+* Automatically focus on web view when window is focused.
+
+Linux
+* Webview now gets default focus.
+1463  Implement datalist tag.  Fix #63.
+1464  Implement datalist tag.  Fix #63.
+1465  [API] Add App API.
+1466  A little comments.
+1467  Merge CONTRIBUTORS to AUTHORS.
+1468  Add CONTRIBUTORS file.
+1469  Add 'node-main', fix #36.
+1470  Add 'node-main', fix #36.
+1471  Enable experimental WebKit features. Fix #105.
+1472  Enable experimental WebKit features. Fix #105.
+1473  Merge branch 'master' of https://github.com/rogerwang/node-webkit
+1474  [Mac] Add Kiosk mode support.
+
+Part of fixes for #80.
+1475  [GTK] Automatically focus on webview when main window get focus.
+
+Part of fixes for #74.
+1476  [Mac] Focus on webview when window got focus.
+
+Part of fixes for #74.
+1477  [Mac] Update the version string. Fix #107.
+1478  [Mac] Update the version string. Fix #107.
+1479  Show error page when failed to run packcage. Fix #104.
+1480  Show error page when failed to run packcage. Fix #104.
+1481  Update Chromium and WebKit code to upstream.
+1482  We're now at v0.3.1-pre.
+1483  Merge branch 'master' of https://github.com/rogerwang/node-webkit
+1484  [Win] Center window by default.  Fix #106.
+1485  [Win] Center window by default.  Fix #106.
+1486  Update README with v0.3.0 info.
+1487  node-webkit v0.3.0 is released.
+
+Changelog:
+
+Core
+* Add new Native UI Library.
+* Support frameless window.
+* Enable fullscreen window and hidden window.
+
+Linux & Windows
+* Fix support for window icons.
+
+Mac & Windows
+* New window toolbar.
+
+Node
+* Update to v0.8.11
+1488  [Win] Make addressbar's height fixed.
+1489  Merge branch 'master' of https://github.com/rogerwang/node-webkit
+1490  [API][Win] Implement Menu with the NativeMenuWin, which is much more mature.
+1491  [API][Mac] Only flip check status for checkbox.
+1492  [Win] Enable Aero style window frame.
+1493  [API][GTK][Win] Add 'click' event for Tray.
+1494  [API][Win] Fix compilation errors.
+1495  Merge branch 'master' of https://github.com/rogerwang/node-webkit
+1496  [API][Win] Implement Tray.
+
+This commit relies on zcbenz@chromium@02184e4 and zcbenz@chromium@3e5e5e1.
+1497  [API][Win] Minor fix of menu item state changes, also see patch zcbenz/chromium@8131507a5a.
+1498  [API][Win] Add submenu support for MenuItem.
+1499  [API] Remove the `title` field of Menu.
+1500  [API][Win] Implement Menu and MenuItem.
+1501  [Win] Implement window events.
+1502  [Win] Refresh window icon after initialization.
+1503  Fix compilation errors.
+1504  [GTK][Win] Set window icon form package.json.
+1505  [Win] Fix toolbar background; Ajust dragging area with toolbar enabled.
+1506  [Win] Bind toolbar to Shell.
+1507  Add resources files for browser toolbar button.
+1508  [Win] Make toolbar correctly resize.
+1509  [Win] Add toolbar implemented with ui/views.
+1510  [API] Refactor GetContructorName to be a normal function.
+1511  [API] Add template helper function for GetObject.
+1512  Remove some unused resource entries.
+1513  Don't ship zip library in node-webkit, use the ones in chrome.
+1514  Don't ship platform_util in node-webkit, use the ones in chrome.
+1515  [Win] Handle OS key presses.
+1516  [API] Add Shell API, and rename shell to nw_shell.
+1517  [Win] Add custom ClientView that delegates CanClose.
+1518  [WebKit] Disable page bounce effect on mac.
+1519  Enable editing commands from javascript.
+1520  [Win] Basic support for frameless window.
+1521  [GTK] Window.close should check for Shell::ShouldCloseWindow.
+1522  [Win] Implement main window with ui/views classes.
+1523  [API] Add Window.requestAttention.
+1524  Add webkit switches: 'plugin', 'java' and 'page-cache'.
+1525  Remove unused switches.
+1526  Add 'show' window field that controls whether window should show on start.
+1527  [Mac] Hide toolbar for frameless window.
+1528  Only start libuv in renderer, this relies on zcbenz/node@48b5d18732.
+1529  Only start libuv in renderer, this relies on zcbenz/node@48b5d18732.
+1530  Separation of NativeWindow is done on GTK.
+
+Part of refactor #84.
+1531  Merge branch 'master' of https://github.com/rogerwang/node-webkit
+1532  Make buttons as no-drag in the window test.
+1533  [API] Fix Tray API with forgetting to call ShowAfterCreate.
+1534  Remove old platform independent Shell implementations.
+
+Part of refactor #84.
+1535  Separate NativeWindow and Shell, Mac is done, GTK and Win cannot compile for now.
+
+Part of refactor #84.
+1536  [Mac] Update window dragging code to use the new WebKit control region syntax.
+1537  [GTK] Implement frameless window.
+1538  [API] Fix setting empty icon.
+1539  [WebKit] Update to upstream.
+1540  Merge branch 'master' of https://github.com/rogerwang/node-webkit
+1541  [GTK] Make WebKit's color scheme conform to GTK+ theme settings.
+1542  [GTK] Don't block the signal when listening to it.
+1543  Fix compilation errors on Windows.
+1544  [API] Try to share more code between different platforms.
+1545  [API] Transfer absolute path when calling methods.
+1546  [API][GTK] Implement Menu, MenuItem, Tray in GTK.
+1547  Fix compilation error of previous commit.
+1548  [API][Mac] MenuItem of checkbox type should automatically flip on clik.
+1549  [Mac] Frameless window support.
+
+Part of fixes for #30.
+1550  [Mac] Fix self extract package. Fixes #79.
+1551  [Mac] Fix self extract package. Fixes #79.
+1552  [API] Pass object's id when calling remote method.
+1553  [API] Add setMinimumSize, setMaximumSize, setResizable for Window.
+1554  [API][GTK] Implement window events.
+1555  Fix compile error with upstream code.
+1556  [WebKit] Update to upstream.
+1557  Add 'List of apps and companies using node-webkit' to home page
+1558  Add 'fullscreen' field in manifest.
+1559  Fix resizable field in manifest.
+1560  Move window's setup procedure to one place.
+1561  Minor fixes for window sizing.
+1562  Seperate window creation code with setup code.
+1563  Don't store DictionaryValue in Shell and don't occupy accelarate key.
+1564  Remove CreateShell function.
+
+Part of refactor for #64.
+1565  Refactor package to a standalone class.
+
+Part of fixes for #64.
+1566  [API] Add Window.showDevTools() function.
+1567  [API] remove Window.from().
+1568  [API][Mac] Add 'focus', 'blur', 'minimize', 'restore' events to Window.
+1569  [API] Fix some compilation errors for win and GTK.
+1570  [API][Mac] Implement fullscreen related API and events.
+1571  [API][Mac] gui.Window can catch the 'close' event.
+1572  Don't record render process id now.
+1573  [API] Add tests for gui.Window.
+1574  [API] Add gui.Window API.
+1575  [API] Make UI objects inherit from EventEmitter.
+1576  [API] the Clipboard.clear().
+1577  [API] Implement gui.Clipboard.
+1578  Fix node's require.
+1579  [API] Fix click handler of MenuItem
+1580  [API] Remove useless utils :)
+1581  [API] Remove objects registry done on browser side.
+1582  [API] Don't transfer default options to browser when initailizea js object.
+1583  [API] Add Base for all UI elements.
+1584  [API] Implement Menu, MenuItem, Tray using js and IPC on renderer side.
+1585  [WebKit] Update to upstream.
+1586  [API] IPC ready.
+1587  [API] Start to make API use IPC implementation.
+1588  A cleaner README.
+1589  Replace with v0.2.6 in README.
+1590  We're now working on v0.3.0-pre.
+1591  node-webkit v0.2.6 is released.
+
+Hi everyone, it has been two weeks since last release, and you may be surprised to find our change log is short. That's because we're working on a new native UI library, which will give you ability to create native menus, tray icons and many other things, it would need quite a lot of work to implement, so please be patient :)
+
+Node
+* Update to v0.8.9.
+
+Core
+* Fix error with spaces in path.
+* Implement window.focus and window.blur.
+* Fix support with three.js.
+* Fix devtools' debugger.
+
+Mac
+* Better handling of .nw files.
+
+Linux
+* Fix javascript dialogs.
+* Fix OpenSSL in native modules.
+1592  Still use multi-process architecture.
+1593  Modify webkit preferences in content browser client.
+1594  Fix navigator.language in single process mode.
+1595  Clean up codes for other unsupported platforms.
+1596  [API][GTK][Win] Fix stubs.
+1597  [API][Mac] Use GCD blocks to implement thread-safe GUI calls.
+1598  [API] Rename Popup to PopupInUI to make it obvious what we're doing.
+1599  [API][Mac] Add Menu.Popup method.
+1600  [API] Add method to get Shell in both renderer and UI thread.
+1601  [API] Fix MenuItem API in multi-threading environment.
+1602  Use single process mode for node-webkit.
+1603  [Mac] Balance release call for MenuItem.Separator.
+1604  Bump UA string to a relative newer one
+1605  Merge branch 'master' of https://github.com/rogerwang/node-webkit
+1606  Only transfer necessary objects from node to DOM.
+
+Fix #21.
+1607  [GTK] Implement window.focus and window.blur.
+1608  Fix Debug build error.
+1609  [Win] Implement window.focus and window.blur.
+
+Part of fixes for #34.
+1610  [Win] Add API stubs.
+1611  [Mac] Implement window.focus and window.blur.
+
+Part of fixes for #34.
+1612  [WebKit] Ignore restrictions on window.focus and window.blur.
+
+Part of fixes for #34.
+1613  [Mac] Fix MenuItem.setImage and Tray.setImage.
+1614  [Mac] Fix duplicate call to InitPackage().
+1615  [GTK][Win] Add UI API implementation stub.
+1616  Set working directory to package's basedir in renderer.
+1617  Decode URI when using window.location.
+
+Fix #48.
+1618  Move tests to root directory.
+1619  [Mac] Menu, MenuItem, Tray API done, with all unit tests.
+1620  Add unit tests for Menu API.
+1621  [Mac] Add initial support for Menu, MenuItem, Tray API
+1622  Remvoe aura code.
+1623  Fix errors under Debug build.
+1624  Fix media compilation errors.
+1625  Part of refactor #43.
+1626  Part of refactor #43.
+1627  Change working directory in C++ instead of in js.
+1628  Fix compilation errors after updating to upstream.
+1629  Setup node in nw code now.
+1630  [WebKit] Undo unneccessary patches, we should do most things in nw.
+1631  Move node installation code from WebKit into node-webkit.
+1632  Remove unused shell_messages.
+
+Part of refactor #43.
+1633  Move shell_switches into common/ .
+
+Part of refactor #43.
+1634  Move all dialogs stuff into browser/ .
+
+Part of refactor #43 .
+1635  Move nw.gypi into this project.
+
+Part of refactor #43 .
+1636  Put url_request_context_getter under net/ .
+
+Part of refactor #43.
+1637  [GTK] Changes to make previous commit obey our coding style.
+1638  Merge pull request #51 from Ivshti/master
+
+[GTK] GTK+ window as desktop
+1639  Merge pull request #51 from Ivshti/master
+
+[GTK] GTK+ window as desktop
+1640  Allows to set the GTK+ window to act as desktop
+1641  add kmAsDesktop switch
+1642  add kmAsDesktop switch
+1643  Add slides link.
+1644  Add renderer view observer.
+1645  Put renderer code to renderer/ .
+
+Part of refactor #43.
+1646  Fix after updating Chromium to upstream.
+1647  [WebKit] Fix string append
+1648  [WebKit] Update to upstream
+1649  [Mac] Bind file types and aware of opening by dragging
+
+Fix #46.
+1650  Part of refactor #43.
+1651  Part of refactor #43.
+1652  [Mac] Add file types info in Info.plist
+1653  Version changed to v0.2.6-pre
+1654  Replace with v0.2.5 in README
+1655  node-webkit v0.2.5 is released.
+
+Changelog:
+Node
+* node-webkit's version is added to process.versions
+
+Core
+* Support getUserMedia API
+* Implement file select dialog
+* Add `nwdirectory` and `nwsaveas` attribute for <input type='file'>
+* Add new nw protocol, having nw:blank and nw:version now
+* Context created by window.open has node's symbols now
+* All DOM operations don't need to be user gesture now
+* Add window.title for manifest file
+
+Windows
+* Fix crash when using devtools on some machines
+
+Mac & Linux
+* Fix issues with node native modules
+
+Windows & Linux
+* Implement file download dialogs
+1656  [WebKit] Add 'nwsaveas' which provides SaveAs dialog.
+
+Part of fixes for #44.
+1657  [WebKit] Fallback to old way, since users may want to rename node's symbols
+
+Postfix for #33.
+1658  [WebKit] Add 'nwdirectory' attribute for <input type='file'>
+
+Part of fixes for #44.
+1659  [All] File selector will no extract directory if not specifed.
+
+Part of fixes for #44.
+1660  [WebKit] Add path field for File object (HTML5 file api has magics now)
+
+Part of fixes for #44.
+1661  [WebKit] Use real paths for file input's value.
+
+Part of fixes for #44.
+1662  [WebKit] Enable scripts to emulate all kinds of user guesture
+
+Part of fixes for #44.
+1663  [All] Support HTML file selector now
+
+Fix #32..
+1664  Remove android stuff
+1665  [WebKit] Clean node's symbols for pages that don't want them.
+
+Postfix for #29 and #33.
+1666  Rip unused log.
+1667  [WebKit] All pages should use node's security token;
+
+[WebKit] node's symbols are now set as getters of "window.prototype".
+
+Fix #33.
+1668  [GTK][Mac] Follow the way of win in dealing with win_width stuff
+1669  [Win] Initialize min_width/min_height/max_width/max_height in the constructot of Shell.
+
+Fix #40 .
+1670  [All] Adjust to show a pretty nw:blank page
+1671  [linux] Fix some compilation errors
+1672  [Mac] Fix compilation warning: setShell is not available with NSWindow
+1673  [WebKit] Update to upstream.
+1674  [Win] Fix window.title
+1675  [All] Add manifest field 'window.title'
+1676  [Win] [GTK] Add support for saving download file.
+1677  [All] Add support for getUserMedia. Fix #26 .
+1678  [All] Add support for getUserMedia. Fix #26 .
+1679  Fix previous commit: Version should be string
+1680  [WebKit] Add node-webkit version in process.versions
+1681  [WebKit] Always allow node.js if protocol is nw:
+1682  [All] Add handler for nw:blank and nw:version
+1683  Update README for v0.2.4
+1684  [POSIX] Fix filename issue
+1685  node-webkit v0.2.4 is released.
+
+Changelog:
+Node
+* Don't exit on uncaughtExcpetion
+* Fix issues on timers module
+
+Core
+* Support window features in window.open
+* Support window.resizeTo, window.moveTo functions
+* Can disable node.js in WebKit in manifest file
+
+Windows
+* Fix crash on some Windows machines
+* Disable debug.log file (Use devtools to see console output from now on)
+1686  [Win] Fix window move issues
+1687  [GTK] Fix resizing issues on GTK
+1688  [WebKit] Seperate node's timers with WebKit's timers
+1689  [WebKit] Catch node's uncaught exception
+1690  [Win] Always output log to stderr
+1691  [All] Add nw:* protocol
+1692  Fix #35.
+[Win] Check where window user data is null in callback, since the window callback maybe called even in the CreateWindow function
+1693  Fix #35.
+[Win] Check where window user data is null in callback, since the window callback maybe called even in the CreateWindow function
+1694  [Mac] Change default package path from executable it self to Resources/app.nw
+1695  [WebKit] Update to upstream
+1696  Update to new upstream
+1697  Add stub functions
+1698  [All] Use default console output
+1699  [All] Be ware of 'screenX' and 'screenY' window features
+1700  [All] Add window.resizeTo and window.moveTo implementations
+1701  [All] Make window manifest aware of window features
+1702  [All] Don't re-create ShellDownloadManagerDelegate if it already exists.
+1703  [Mac] move html file to resources directory
+1704  [All] Add switch for disable node.js
+1705  Update README with 0.2.3
+1706  node-webkit v0.2.3 is released
+
+Changelog:
+
+Node
+* Update to v0.8.8
+* Rename OpenSSL symbols to solve conflicts with NSS
+
+Core
+* Fix crashes caused by prerender elements
+* Fix bugs in --url and manifest
+* Locale checking don't rely on locales folder now
+* Grant universal access in our WebKit
+* Don't insert node.js symbols in normal web pages
+* window.open partly works now
+
+Mac
+* Fix window.positon in manifest file
+* Much better integration with application menubar
+
+Linux
+* Use NSS stack instead of OpenSSL for Chromium's networking
+1707  [All] Add prerenderer client. Fix #25
+1708  [WebKit] Always grant universal access
+1709  [Mac] Support window.position with "center"
+1710  [All] Fix no-protocol url in --url;
+      Fix package without "window" field;
+1711  [Mac] Minor change on key listening
+1712  [Mac] Fix close shortcut
+1713  [WebKit] Don't insert node symbols on normal web pages
+1714  [Mac] Change version string in Info.plist
+1715  [Mac] Always show menu; Names in menu items will be automatically replaced with app's name.
+1716  Fix hello world link for README
+1717  [All] Refactor on window manifest
+[Mac] Always show menu but disable 'Debug' is no --developer switch
+1718  [WebKit] Update patch to newest upstream
+1719  Strip out layout tests and import newest changes
+1720  Remove test codes in nw
+1721  Update version to 0.2.3-pre
+1722  Replace with v0.2.2
+1723  Ready for 0.2.2 release
+1724  Provide locale information. Fix rogerwang/node-webkit#24
+1725  Enable toolbar open on default
+1726  Add correct description and 1 more feature
+1727  Add toolbar switch (Mac)
+1728  Merge branch 'master' of https://github.com/rogerwang/node-webkit
+1729  Fix problems about paths (Mac)
+1730  Uniform the name of devtools menu
+1731  Add --version
+1732  Fix LICENSE since we have switched from CEF to Content Shell
+1733  Add name field in the quick start
+1734  Merge branch 'shell'
+1735  Remove cef-based code
+1736  [WebkKit] Use WebKit's console and setTimeout function
+1737  Init uv in shell_main
+1738  Merge pull request #23 from japj/patch-1
+
+fix google groups url
+1739  Merge pull request #23 from japj/patch-1
+
+fix google groups url
+1740  fix google groups url
+1741  resource pak name should be nw.pak
+1742  Add webkit patch
+1743  Merge branch 'shell' of https://github.com/rogerwang/node-webkit into shell
+1744  Merge branch 'shell' of https://github.com/rogerwang/node-webkit into shell
+1745  Fix compilation error on Windows
+1746  Merge branch 'shell' of https://github.com/rogerwang/node-webkit into shell
+1747  Merge branch 'shell' of https://github.com/rogerwang/node-webkit into shell
+1748  Replace copyright headers
+1749  Fix mac compilation error
+1750  Add back original copyright
+1751  Replace source code headers
+1752  Fix copyright stuff (still need to replace headers in source code)
+1753  Migrate with all manifest stuff
+1754  Content shell version with package support
+1755  Rename shell_resources to nw_resources to avoid conflict
+1756  Add codes from content_shell
+1757  Add version number in README
+1758  Add chapter with debugging
+1759  Print version with --version switch
+1760  Same with previous commit
+1761  Don't print error when self extracting
+1762  Show no toolbar in dev tool window
+1763  Always open debugger in external window
+1764  Don't add prefix if the 'main' field starts with a protocol
+1765  Update README
+1766  Add license file, need to update headers still
+1767  Change headers to compile
+1768  No need for old .gitignore
+1769  Add file explorer demo in README.
+1770  Merge branch 'nw' into HEAD
+1771  No need for old code
+1772  No need for .gitmodules
+1773  Merge branch 'nw' of https://github.com/rogerwang/node-webkit
+1774  Move everything into src folder
+1775  Merge branch 'master' of https://github.com/zcbenz/cef into nwebkit
+1776  Merge branch 'master' of https://github.com/zcbenz/cef into nwebkit
+1777  Hide test menu
+1778  Fix sub modules
+1779  Add sub modules
+1780  Add download links
+1781  Use abosolute links in README
+1782  update README
+1783  Update README
+1784  Take urlbar's height when toolbar is not showed (Mac)
+1785  Fix some misnames (Mac)
+1786  Update README
+1787  Supports "window.toolbar" (Mac)
+1788  Fix resource path (Windows)
+1789  Fix string literal under Windows
+1790  Use string16 on Windows and std::string otherwise
+1791  Fix compilation eror (Windows)
+1792  Use string16 when manipulating FilePath and string
+1793  Fix compilation errors (Windows)
+1794  Add support for "window.width/height" (Mac)
+1795  Clean out useless stuff (Mac)
+1796  Never need to get pwd
+1797  Add support for "window.min/max_width/height" (Windows)
+1798  Add support for "window.width/height/position" (Windows)
+1799  Clear resource file (Windows)
+1800  Hide useless controls (Windows)
+1801  Merge branch 'master' of https://github.com/zcbenz/cef
+1802  Add lost ico (Windows)
+1803  Make app runs with relative paths
+1804  Add "window.icon" field (Linux)
+1805  Fix links 2
+1806  Fix links
+1807  A more easy and smooth README, details moved to Wiki
+1808  Initial documentation
+1809  Add support for standalone package
+1810  Fix empty 'width' and 'height' issue (Linux)
+1811  Add some more "window" options (Linux)
+1812  "window" field is used in manifest to control browser window (Linux)
+1813  Add support for zip package.
+1814  Add zip stuff from chrome
+1815  Can set width and height in manifest
+1816  Enable toolbar on/off in manifest file (only Linux now)
+1817  Enable features on/off in manifest
+1818  Initial package support
+1819  Add new target: nw
+This will be our new main program, I'll move nw out of cef in future
+1820  Merge branch 'master' of http://github.com/zcbenz/cef
+1821  update README for 64bit binaries
+1822  update introduction page
+
+webkit repo; working on windows/osx
+1823  WebKit repo published
+1824  notice in README for only 32bit binary
+1825  added 'onclose' callback
+1826  fix documentation for libev-dev dependency
+1827  add MIT license notice
+1828  documents and patches for release
+1829  rename nwebkit to linux-gtk
+1830  documentation and tests
+1831  init callback support
+1832  runscript example & context support
+1833  new init and other helper methods
+1834  context wrapper to receive the webkit context
+1835  initial commit

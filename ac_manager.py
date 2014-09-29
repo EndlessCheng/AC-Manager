@@ -106,27 +106,6 @@ def get_acdream_ac_num():
         start_label="Solved: <span class=\"user user-green\">")
 
 
-def get_lightoj_ac_num():
-    pass
-
-
-# 必须要登录
-# username = raw_input("LightOJ User ID（在 User Statistics 中点击自己用户名，看 URL 最后那个数字）：")
-# return get_ac_num(
-# url="http://www.lightoj.com/volume_userstat.php?user_id=" + username,
-# start_label="Total Solved</th>",
-# add=20)
-
-
-def get_topcoder_ac_num():
-    pass
-
-
-def get_codeforces_ac_num():
-    # "http://codeforces.com/submissions/" + synapse + "/page/" + 1
-    pass
-
-
 def get_uva_ac_num():
     username = raw_input("UVa User ID（uHunt URL 最后的那个数字）：")
     return get_ac_num(

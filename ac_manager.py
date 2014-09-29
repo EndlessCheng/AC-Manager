@@ -1,8 +1,6 @@
 # -*- coding: UTF-8 -*-
 import urllib2
-import sys
-reload(sys)
-sys.setdefaultencoding('gbk')
+
 
 def get_html_with_user_agent(url):
     user_agent = "Mozilla/4.0 (compatible; MSIE 5.5; Windows NT)"

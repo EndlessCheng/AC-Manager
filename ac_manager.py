@@ -7,7 +7,7 @@ def get_html_with_user_agent(url):
     headers = {'User-Agent': user_agent}
     request = urllib2.Request(url, headers=headers)
     try:
-        response = urllib2.urlopen(request)  # 10秒限制如何解决？IP 伪装？
+        response = urllib2.urlopen(request)
     except urllib2.HTTPError, err:
         # if err.code == 404:
         raise

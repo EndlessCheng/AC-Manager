@@ -26,7 +26,7 @@ def get_ac_num(url, start_label, end_label="<", loop=1, add=0):
             raise
 
     start_position = 0
-    for i in range(loop):
+    for i in xrange(loop):
         start_position = html.find(start_label, start_position)
         if start_position == -1:  # not found this user or page error
             print "\t0"

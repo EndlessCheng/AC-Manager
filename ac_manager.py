@@ -124,7 +124,7 @@ def get_uvalive_ac_num():
 
 def main():
     ac_cnt = 0
-    ac_cnt += get_poj_ac_num()  # notice we have printed the AC number in get_ac_num()
+    ac_cnt += get_poj_ac_num()  # notice that we have printed the AC number in get_ac_num()
     ac_cnt += get_hdu_ac_num()
     ac_cnt += get_zoj_ac_num()
     ac_cnt += get_fzu_ac_num()

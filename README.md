@@ -5,4 +5,4 @@ AC-Manager
 
 使用
 ===
-下载 `ac_manager.zip` 并解压，运行`ac_manager.exe`
+右键 `ac_manager.zip` 另存为，解压，运行`ac_manager.exe`

@@ -44,7 +44,7 @@ def get_ac_num(url, start_label, end_label="<", loop=1, add=0):
     print "\t%d" % ac_num
     return ac_num
 
-def get_cf_rank(username):
+def get_cf_rank():
     username = raw_input(u"CF 用户名：")
     return get_ac_num(
         url="http://codeforces.com/profile/" + username,
@@ -52,7 +52,7 @@ def get_cf_rank(username):
         end_label="</")
 
 
-def get_cf_max(username):
+def get_cf_max():
     # username = raw_input(u"CF 用户名：")
     return get_ac_num(
         url="http://codeforces.com/profile/" + username,
@@ -61,7 +61,7 @@ def get_cf_max(username):
         add=100)
 
 
-def get_bc_rank(username):
+def get_bc_rank():
     username = raw_input(u"BC 用户名：")
     return get_ac_num(
         url="http://bestcoder.hdu.edu.cn/rating.php?user=" + username,
@@ -69,7 +69,7 @@ def get_bc_rank(username):
         end_label=" (max")
 
 
-def get_bc_max(username):
+def get_bc_max():
     # username = raw_input(u"BC 用户名：")
     return get_ac_num(
         url="http://bestcoder.hdu.edu.cn/rating.php?user=" + username,

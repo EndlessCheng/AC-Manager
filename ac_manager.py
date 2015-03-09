@@ -174,6 +174,10 @@ def main():
     ac_cnt += get_uva_ac_num()
     ac_cnt += get_uvalive_ac_num()
     print u"总 AC 数：%d" % ac_cnt
+    jud = raw_input(u"是否查询Rating?(y/n):")
+    if jud == 'y':
+        get_cf_rank()
+        get_bc_rank()
     n = raw_input(u"按回车退出")
 
 

@@ -34,10 +34,48 @@ def get_ac_num(url, start_label, end_label="<", loop=1, add=0):
         start_position += len(start_label)
     start_position += add
 
+    jud_digit = html[start_position:start_position+1]
+    while not jud_digit.isdigit():
+        start_position += 1
+        jud_digit = html[start_position:start_position+1]
+
     end_position = html.find(end_label, start_position)
     ac_num = int(html[start_position:end_position])
     print "\t%d" % ac_num
     return ac_num
+
+def get_cf_rank():
+    username = raw_input(u"CF 用户名：")
+    return get_ac_num(
+        url="http://codeforces.com/profile/" + username,
+        start_label="<span style=\"font-weight:bold;\" class=\"user-",
+        end_label="</")
+
+
+def get_cf_max():
+    # username = raw_input(u"CF 用户名：")
+    return get_ac_num(
+        url="http://codeforces.com/profile/" + username,
+        start_label="<span style=\"font-weight:bold;\" class=\"user-",
+        end_label="</",
+        add=100)
+
+
+def get_bc_rank():
+    username = raw_input(u"BC 用户名：")
+    return get_ac_num(
+        url="http://bestcoder.hdu.edu.cn/rating.php?user=" + username,
+        start_label="<p>Rating: </p>",
+        end_label=" (max")
+
+
+def get_bc_max():
+    # username = raw_input(u"BC 用户名：")
+    return get_ac_num(
+        url="http://bestcoder.hdu.edu.cn/rating.php?user=" + username,
+        start_label="<p>Rating: </p>",
+        end_label=")</",
+        add=20)
 
 
 def get_poj_ac_num():
@@ -136,6 +174,10 @@ def main():
     ac_cnt += get_uva_ac_num()
     ac_cnt += get_uvalive_ac_num()
     print u"总 AC 数：%d" % ac_cnt
+    jud = raw_input(u"是否查询Rating?(y/n):")
+    if jud == 'y':
+        get_cf_rank()
+        get_bc_rank()
     n = raw_input(u"按回车退出")
 
 
